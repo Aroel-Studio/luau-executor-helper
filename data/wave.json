@@ -1,0 +1,281 @@
+{
+  "functions": [
+    {
+      "name": "decompile",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "decompile(script: Instance): string",
+      "description": "Decompiles a LocalScript or ModuleScript and returns the decompiled output.",
+      "parameters": [
+        { "name": "script", "type": "Instance", "description": "The script to decompile" }
+      ],
+      "returns": [
+        { "type": "string", "description": "Decompiled Lua source code" }
+      ],
+      "example": "local src = decompile(game.Players.LocalPlayer.PlayerScripts.PlayerModule)",
+      "notes": "Premium only function in Wave. May fail on obfuscated scripts.",
+      "seeAlso": ["saveinstance"]
+    },
+    {
+      "name": "saveinstance",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "saveinstance(Object: Instance?, FilePath: string?, Options: table?): void",
+      "description": "Saves the current game or specific object to a .RBXL or .RBXM file.",
+      "parameters": [
+        { "name": "Object", "type": "Instance", "description": "Object to save (optional)" },
+        { "name": "FilePath", "type": "string", "description": "Output path (optional)" },
+        { "name": "Options", "type": "table", "description": "Save options (Decompile, NilInstances, etc.)" }
+      ],
+      "returns": [],
+      "example": "saveinstance(workspace.CoolModel, 'Cool Model', { Decompile = true })",
+      "notes": "Options table takes: Decompile, DecompileTimeout, DecompileIgnore, NilInstances, MaxThreads, ShowStatus.",
+      "seeAlso": ["decompile"]
+    },
+    {
+      "name": "keypress",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "keypress(key: number): void",
+      "description": "Simulates a key press (hardware level).",
+      "parameters": [
+        { "name": "key", "type": "number", "description": "Virtual keycode" }
+      ],
+      "returns": [],
+      "example": "keypress(0x41) -- Press 'A'",
+      "notes": "",
+      "seeAlso": ["keyrelease"]
+    },
+    {
+      "name": "keyrelease",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "keyrelease(key: number): void",
+      "description": "Simulates a key release.",
+      "parameters": [
+        { "name": "key", "type": "number", "description": "Virtual keycode" }
+      ],
+      "returns": [],
+      "example": "keyrelease(0x41)",
+      "notes": "",
+      "seeAlso": ["keypress"]
+    },
+    {
+      "name": "mouse1click",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse1click(): void",
+      "description": "Simulates a left mouse button click.",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse1click()",
+      "notes": "",
+      "seeAlso": ["mouse1press", "mouse1release"]
+    },
+    {
+      "name": "mouse1press",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse1press(): void",
+      "description": "Simulates a left mouse button press (held down).",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse1press()",
+      "notes": "",
+      "seeAlso": ["mouse1release"]
+    },
+    {
+      "name": "mouse1release",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse1release(): void",
+      "description": "Simulates a left mouse button release.",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse1release()",
+      "notes": "",
+      "seeAlso": ["mouse1press"]
+    },
+    {
+      "name": "mouse2click",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse2click(): void",
+      "description": "Simulates a right mouse button click.",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse2click()",
+      "notes": "",
+      "seeAlso": ["mouse2press", "mouse2release"]
+    },
+    {
+      "name": "mouse2press",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse2press(): void",
+      "description": "Simulates a right mouse button press (held down).",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse2press()",
+      "notes": "",
+      "seeAlso": ["mouse2release"]
+    },
+    {
+      "name": "mouse2release",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mouse2release(): void",
+      "description": "Simulates a right mouse button release.",
+      "parameters": [],
+      "returns": [],
+      "example": "mouse2release()",
+      "notes": "",
+      "seeAlso": ["mouse2press"]
+    },
+    {
+      "name": "mousemoveabs",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mousemoveabs(x: number, y: number): void",
+      "description": "Moves the mouse cursor to absolute coordinates on the screen.",
+      "parameters": [
+        { "name": "x", "type": "number", "description": "X coordinate" },
+        { "name": "y", "type": "number", "description": "Y coordinate" }
+      ],
+      "returns": [],
+      "example": "mousemoveabs(500, 500)",
+      "notes": "",
+      "seeAlso": ["mousemoverel"]
+    },
+    {
+      "name": "mousemoverel",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mousemoverel(x: number, y: number): void",
+      "description": "Moves the mouse cursor relative to its current position.",
+      "parameters": [
+        { "name": "x", "type": "number", "description": "X offset" },
+        { "name": "y", "type": "number", "description": "Y offset" }
+      ],
+      "returns": [],
+      "example": "mousemoverel(10, 0)",
+      "notes": "",
+      "seeAlso": ["mousemoveabs"]
+    },
+    {
+      "name": "mousescroll",
+      "library": "Input",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "mousescroll(amount: number): void",
+      "description": "Simulates scrolling the mouse wheel.",
+      "parameters": [
+        { "name": "amount", "type": "number", "description": "Scroll amount (positive for up, negative for down)" }
+      ],
+      "returns": [],
+      "example": "mousescroll(120)",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "messagebox",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "messagebox(text: string, caption: string, flags: number): number",
+      "description": "Creates a native OS message box.",
+      "parameters": [
+        { "name": "text", "type": "string", "description": "Message box content" },
+        { "name": "caption", "type": "string", "description": "Message box title" },
+        { "name": "flags", "type": "number", "description": "Button flags (0=OK, 4=Yes/No, etc)" }
+      ],
+      "returns": [
+        { "type": "number", "description": "Result clicked (1=OK, 6=Yes, 7=No)" }
+      ],
+      "example": "local res = messagebox('Are you sure?', 'Warning', 4)",
+      "notes": "Wave alias: messageboxasync",
+      "seeAlso": []
+    },
+    {
+      "name": "queueonteleport",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "queueonteleport(script: string): void",
+      "description": "Queues script to be executed after the next teleport.",
+      "parameters": [
+        { "name": "script", "type": "string", "description": "Lua source code" }
+      ],
+      "returns": [],
+      "example": "queueonteleport('print(\"Teleported!\")')",
+      "notes": "Alias: queue_on_teleport",
+      "seeAlso": ["clearteleportqueue"]
+    },
+    {
+      "name": "clearteleportqueue",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "clearteleportqueue(): void",
+      "description": "Clears all queued teleport requests for the local player.",
+      "parameters": [],
+      "returns": [],
+      "example": "clearteleportqueue()",
+      "notes": "",
+      "seeAlso": ["queueonteleport"]
+    },
+    {
+      "name": "getfpscap",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "getfpscap(): number",
+      "description": "Gets your current FPS cap in-game.",
+      "parameters": [],
+      "returns": [
+        { "type": "number", "description": "FPS limit" }
+      ],
+      "example": "print(getfpscap())",
+      "notes": "",
+      "seeAlso": ["setfpscap"]
+    },
+    {
+      "name": "setfpscap",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "wave"],
+      "signature": "setfpscap(cap: number): void",
+      "description": "Sets the fps cap.",
+      "parameters": [
+        { "name": "cap", "type": "number", "description": "New FPS limit (0 for unlimited)" }
+      ],
+      "returns": [],
+      "example": "setfpscap(144)",
+      "notes": "",
+      "seeAlso": ["getfpscap"]
+    },
+    {
+      "name": "gethwid",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "gethwid(): string",
+      "description": "Gets the hardware ID (HWID) of the local system.",
+      "parameters": [],
+      "returns": [
+        { "type": "string", "description": "HWID string" }
+      ],
+      "example": "print(gethwid())",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "identifyexecutor",
+      "library": "Miscellaneous",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "identifyexecutor(): (string, string)",
+      "description": "Returns the executor name and version.",
+      "parameters": [],
+      "returns": [
+        { "type": "string", "description": "Executor name" },
+        { "type": "string", "description": "Executor version" }
+      ],
+      "example": "local name, ver = identifyexecutor()\nprint(name, ver)",
+      "notes": "Alias: getexecutorname",
+      "seeAlso": []
+    }
+  ]
+}

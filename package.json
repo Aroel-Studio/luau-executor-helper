@@ -1,0 +1,78 @@
+{
+  "name": "luau-executor-helper",
+  "displayName": "Luau Executor Helper",
+  "description": "IntelliSense, snippets, and hover documentation for Roblox executors (Potassium, Volt, sUNC, Wave).",
+  "version": "1.0.0",
+  "publisher": "Aroel-Studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aroel-Studio/luau-executor-helper"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "roblox",
+    "luau",
+    "lua",
+    "executor",
+    "exploit"
+  ],
+  "activationEvents": [
+    "onLanguage:lua",
+    "onLanguage:luau"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "luau",
+        "aliases": ["Luau", "luau"],
+        "extensions": [".luau"]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lua",
+        "scopeName": "injection.executor.luau",
+        "path": "./syntaxes/luau-exploit.tmLanguage.json",
+        "injectTo": ["source.lua", "source.luau"]
+      },
+      {
+        "language": "luau",
+        "scopeName": "injection.executor.luau",
+        "path": "./syntaxes/luau-exploit.tmLanguage.json",
+        "injectTo": ["source.lua", "source.luau"]
+      }
+    ],
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./snippets/luau-exploit.json"
+      },
+      {
+        "language": "luau",
+        "path": "./snippets/luau-exploit.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "typescript": "^5.1.6"
+  }
+}

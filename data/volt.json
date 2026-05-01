@@ -1,0 +1,170 @@
+{
+  "functions": [
+    {
+      "name": "cache.replace",
+      "library": "Cache",
+      "executors": ["volt", "wave"],
+      "signature": "cache.replace(obj: Instance, new_obj: Instance): void",
+      "description": "Replaces an instance in the cache with a different instance.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Original instance" },
+        { "name": "new_obj", "type": "Instance", "description": "New instance" }
+      ],
+      "returns": [],
+      "example": "cache.replace(workspace.Part, workspace.OtherPart)",
+      "notes": "Useful for tricking scripts that index the cache.",
+      "seeAlso": ["cache.invalidate"]
+    },
+    {
+      "name": "cache.invalidate",
+      "library": "Cache",
+      "executors": ["volt", "wave"],
+      "signature": "cache.invalidate(obj: Instance): void",
+      "description": "Invalidates an instance in the cache.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Instance to invalidate" }
+      ],
+      "returns": [],
+      "example": "cache.invalidate(workspace.Part)",
+      "notes": "",
+      "seeAlso": ["cache.replace"]
+    },
+    {
+      "name": "cache.iscached",
+      "library": "Cache",
+      "executors": ["volt", "wave"],
+      "signature": "cache.iscached(obj: Instance): boolean",
+      "description": "Checks if an instance is cached.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Instance to check" }
+      ],
+      "returns": [
+        { "type": "boolean", "description": "True if cached" }
+      ],
+      "example": "print(cache.iscached(workspace.Part))",
+      "notes": "",
+      "seeAlso": ["cache.invalidate"]
+    },
+    {
+      "name": "checkcaller",
+      "library": "Closure",
+      "executors": ["volt", "sunc", "wave"],
+      "signature": "checkcaller(): boolean",
+      "description": "Returns true if the current thread is a local thread (executor created).",
+      "parameters": [],
+      "returns": [
+        { "type": "boolean", "description": "True if executor thread" }
+      ],
+      "example": "if checkcaller() then print('Executor') end",
+      "notes": "",
+      "seeAlso": ["isourthread"]
+    },
+    {
+      "name": "clonefunction",
+      "library": "Closure",
+      "executors": ["volt", "sunc", "wave"],
+      "signature": "clonefunction(func: function): function",
+      "description": "Clones a function.",
+      "parameters": [
+        { "name": "func", "type": "function", "description": "Function to clone" }
+      ],
+      "returns": [
+        { "type": "function", "description": "Cloned function" }
+      ],
+      "example": "local newPrint = clonefunction(print)",
+      "notes": "",
+      "seeAlso": ["hookfunction"]
+    },
+    {
+      "name": "VoltSignal.new",
+      "library": "VoltSignal",
+      "executors": ["volt"],
+      "signature": "VoltSignal.new(): VoltSignal",
+      "description": "Constructs a new VoltSignal object.",
+      "parameters": [],
+      "returns": [
+        { "type": "VoltSignal", "description": "The signal object" }
+      ],
+      "example": "local sig = VoltSignal.new()",
+      "notes": "Custom signal implementation in Volt.",
+      "seeAlso": []
+    },
+    {
+      "name": "oth.hook",
+      "library": "OTH",
+      "executors": ["potassium", "volt"],
+      "signature": "oth.hook(func: function, hook: function): function",
+      "description": "Hooks a function by utilizing a secure Off-Thread execution model.",
+      "parameters": [
+        { "name": "func", "type": "function", "description": "Function to hook" },
+        { "name": "hook", "type": "function", "description": "Hook function" }
+      ],
+      "returns": [
+        { "type": "function", "description": "Original function" }
+      ],
+      "example": "local old\nold = oth.hook(print, function(...) old(...) end)",
+      "notes": "Highly secure for C closures.",
+      "seeAlso": ["oth.unhook", "hookfunction"]
+    },
+    {
+      "name": "oth.unhook",
+      "library": "OTH",
+      "executors": ["potassium", "volt"],
+      "signature": "oth.unhook(func: function): void",
+      "description": "Unhooks a function previously hooked with oth.hook.",
+      "parameters": [
+        { "name": "func", "type": "function", "description": "Hooked function" }
+      ],
+      "returns": [],
+      "example": "oth.unhook(print)",
+      "notes": "",
+      "seeAlso": ["oth.hook"]
+    },
+    {
+      "name": "raknet.add_send_hook",
+      "library": "RakNet",
+      "executors": ["potassium", "volt"],
+      "signature": "raknet.add_send_hook(hook: function): function",
+      "description": "Registers a callback that runs before a RakNetPacket is sent.",
+      "parameters": [
+        { "name": "hook", "type": "function", "description": "Callback(packet)" }
+      ],
+      "returns": [
+        { "type": "function", "description": "Hook connection" }
+      ],
+      "example": "raknet.add_send_hook(function(packet)\n  if packet.data[1] == 0x83 then return false end\nend)",
+      "notes": "Returning false blocks the packet.",
+      "seeAlso": ["raknet.remove_send_hook"]
+    },
+    {
+      "name": "raknet.remove_send_hook",
+      "library": "RakNet",
+      "executors": ["potassium", "volt"],
+      "signature": "raknet.remove_send_hook(hook: function): void",
+      "description": "Removes a previously registered send hook.",
+      "parameters": [
+        { "name": "hook", "type": "function", "description": "The registered hook" }
+      ],
+      "returns": [],
+      "example": "raknet.remove_send_hook(myHook)",
+      "notes": "",
+      "seeAlso": ["raknet.add_send_hook"]
+    },
+    {
+      "name": "LuaStateProxy.new",
+      "library": "LuaStateProxy",
+      "executors": ["volt"],
+      "signature": "LuaStateProxy.new(state: number): LuaStateProxy",
+      "description": "Creates a proxy object for a Lua execution state.",
+      "parameters": [
+        { "name": "state", "type": "number", "description": "State identifier" }
+      ],
+      "returns": [
+        { "type": "LuaStateProxy", "description": "Proxy object" }
+      ],
+      "example": "local lsp = LuaStateProxy.new(1)",
+      "notes": "",
+      "seeAlso": []
+    }
+  ]
+}

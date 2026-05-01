@@ -1,0 +1,202 @@
+{
+  "functions": [
+    {
+      "name": "base64encode",
+      "library": "Encoding",
+      "executors": ["sunc", "wave", "volt"],
+      "signature": "base64encode(data: string): string",
+      "description": "Encodes a string into Base64 format.",
+      "parameters": [
+        { "name": "data", "type": "string", "description": "String to encode" }
+      ],
+      "returns": [
+        { "type": "string", "description": "Base64 encoded string" }
+      ],
+      "example": "print(base64encode('hello'))",
+      "notes": "Global alias for crypt.base64encode in sUNC.",
+      "seeAlso": ["base64decode"]
+    },
+    {
+      "name": "base64decode",
+      "library": "Encoding",
+      "executors": ["sunc", "wave", "volt"],
+      "signature": "base64decode(data: string): string",
+      "description": "Decodes a Base64 string.",
+      "parameters": [
+        { "name": "data", "type": "string", "description": "Base64 encoded string" }
+      ],
+      "returns": [
+        { "type": "string", "description": "Decoded string" }
+      ],
+      "example": "print(base64decode('aGVsbG8='))",
+      "notes": "Global alias for crypt.base64decode in sUNC.",
+      "seeAlso": ["base64encode"]
+    },
+    {
+      "name": "lz4compress",
+      "library": "Encoding",
+      "executors": ["sunc", "wave", "volt"],
+      "signature": "lz4compress(data: string): string",
+      "description": "Compresses a string using LZ4.",
+      "parameters": [
+        { "name": "data", "type": "string", "description": "String to compress" }
+      ],
+      "returns": [
+        { "type": "string", "description": "LZ4 compressed string" }
+      ],
+      "example": "local comp = lz4compress('data')",
+      "notes": "Global alias for crypt.lz4compress.",
+      "seeAlso": ["lz4decompress"]
+    },
+    {
+      "name": "lz4decompress",
+      "library": "Encoding",
+      "executors": ["sunc", "wave", "volt"],
+      "signature": "lz4decompress(data: string, size: number?): string",
+      "description": "Decompresses an LZ4 compressed string.",
+      "parameters": [
+        { "name": "data", "type": "string", "description": "Compressed string" },
+        { "name": "size", "type": "number", "description": "Original size (optional)" }
+      ],
+      "returns": [
+        { "type": "string", "description": "Decompressed string" }
+      ],
+      "example": "local decomp = lz4decompress(comp)",
+      "notes": "Global alias for crypt.lz4decompress.",
+      "seeAlso": ["lz4compress"]
+    },
+    {
+      "name": "firesignal",
+      "library": "Signal",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "firesignal(signal: RBXScriptSignal, ...): void",
+      "description": "Fires a Roblox signal with the provided arguments.",
+      "parameters": [
+        { "name": "signal", "type": "RBXScriptSignal", "description": "Signal to fire" },
+        { "name": "...", "type": "any", "description": "Arguments to pass" }
+      ],
+      "returns": [],
+      "example": "firesignal(workspace.Part.Touched, workspace.OtherPart)",
+      "notes": "",
+      "seeAlso": ["getconnections"]
+    },
+    {
+      "name": "getconnections",
+      "library": "Signal",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "getconnections(signal: RBXScriptSignal): table",
+      "description": "Returns a list of connections to the specified signal.",
+      "parameters": [
+        { "name": "signal", "type": "RBXScriptSignal", "description": "Signal to inspect" }
+      ],
+      "returns": [
+        { "type": "table", "description": "Array of ScriptConnection objects" }
+      ],
+      "example": "for _, conn in ipairs(getconnections(workspace.Changed)) do\n    conn:Disable()\nend",
+      "notes": "",
+      "seeAlso": ["firesignal"]
+    },
+    {
+      "name": "gethiddenproperty",
+      "library": "Reflection",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "gethiddenproperty(obj: Instance, property: string): (any, boolean)",
+      "description": "Gets the hidden property of an Instance.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Target instance" },
+        { "name": "property", "type": "string", "description": "Property name" }
+      ],
+      "returns": [
+        { "type": "any", "description": "Property value" },
+        { "type": "boolean", "description": "Is property hidden" }
+      ],
+      "example": "local sim, hidden = gethiddenproperty(workspace, 'SimulationRadius')",
+      "notes": "",
+      "seeAlso": ["sethiddenproperty"]
+    },
+    {
+      "name": "sethiddenproperty",
+      "library": "Reflection",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "sethiddenproperty(obj: Instance, property: string, value: any): boolean",
+      "description": "Sets the hidden property of an Instance.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Target instance" },
+        { "name": "property", "type": "string", "description": "Property name" },
+        { "name": "value", "type": "any", "description": "New value" }
+      ],
+      "returns": [
+        { "type": "boolean", "description": "Success status" }
+      ],
+      "example": "sethiddenproperty(workspace, 'SimulationRadius', math.huge)",
+      "notes": "",
+      "seeAlso": ["gethiddenproperty"]
+    },
+    {
+      "name": "WebSocket.connect",
+      "library": "WebSocket",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "WebSocket.connect(url: string): WebSocket",
+      "description": "Connects to a WebSocket server.",
+      "parameters": [
+        { "name": "url", "type": "string", "description": "WebSocket URL (ws:// or wss://)" }
+      ],
+      "returns": [
+        { "type": "WebSocket", "description": "WebSocket connection object" }
+      ],
+      "example": "local ws = WebSocket.connect('ws://localhost:8080')\nws.OnMessage:Connect(function(msg)\n    print(msg)\nend)\nws:Send('Hello')",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "getcustomasset",
+      "library": "FileSystem",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "getcustomasset(path: string, noCache: boolean?): string",
+      "description": "Returns a content URI (rbxasset://) that points to the local file.",
+      "parameters": [
+        { "name": "path", "type": "string", "description": "Path to local file in workspace" },
+        { "name": "noCache", "type": "boolean", "description": "If true, bypasses asset cache" }
+      ],
+      "returns": [
+        { "type": "string", "description": "Content URI" }
+      ],
+      "example": "local asset = getcustomasset('image.png')\nImageLabel.Image = asset",
+      "notes": "",
+      "seeAlso": ["writefile"]
+    },
+    {
+      "name": "cloneref",
+      "library": "Instances",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "cloneref(obj: Instance): Instance",
+      "description": "Returns a clone of the Instance reference, bypassing == comparisons against the original.",
+      "parameters": [
+        { "name": "obj", "type": "Instance", "description": "Instance to clone reference" }
+      ],
+      "returns": [
+        { "type": "Instance", "description": "Cloned reference" }
+      ],
+      "example": "local clone = cloneref(game)\nprint(clone == game) -- false",
+      "notes": "",
+      "seeAlso": ["compareinstances"]
+    },
+    {
+      "name": "compareinstances",
+      "library": "Instances",
+      "executors": ["potassium", "volt", "sunc", "wave"],
+      "signature": "compareinstances(a: Instance, b: Instance): boolean",
+      "description": "Compares two instances to see if they refer to the same object, regardless of cloneref.",
+      "parameters": [
+        { "name": "a", "type": "Instance", "description": "First instance" },
+        { "name": "b", "type": "Instance", "description": "Second instance" }
+      ],
+      "returns": [
+        { "type": "boolean", "description": "True if they refer to the same object" }
+      ],
+      "example": "print(compareinstances(game, cloneref(game))) -- true",
+      "notes": "",
+      "seeAlso": ["cloneref"]
+    }
+  ]
+}
