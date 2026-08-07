@@ -2,7 +2,7 @@
   "name": "luau-executor-helper",
   "displayName": "Luau Executor Helper",
   "description": "IntelliSense, snippets, and hover documentation for Roblox executors (Potassium, Volt, sUNC, Wave).",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "Aroel-Studio",
   "repository": {
     "type": "git",
@@ -37,6 +37,16 @@
       }
     ],
     "grammars": [
+      {
+        "language": "luau",
+        "scopeName": "source.luau",
+        "path": "./syntaxes/luau.tmLanguage.json"
+      },
+      {
+        "language": "lua",
+        "scopeName": "source.luau",
+        "path": "./syntaxes/luau.tmLanguage.json"
+      },
       {
         "language": "lua",
         "scopeName": "injection.executor.luau",

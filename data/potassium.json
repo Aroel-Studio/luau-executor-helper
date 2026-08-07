@@ -3,131 +3,225 @@
     {
       "name": "create_comm_channel",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "create_comm_channel(): (string, BindableEvent)",
       "description": "Returns an identifier and a BindableEvent. Used in one-way communication between actors.",
       "parameters": [],
       "returns": [
-        { "type": "string", "description": "Channel identifier" },
-        { "type": "BindableEvent", "description": "Communication event" }
+        {
+          "type": "string",
+          "description": "Channel identifier"
+        },
+        {
+          "type": "BindableEvent",
+          "description": "Communication event"
+        }
       ],
       "example": "local id, event = create_comm_channel()",
       "notes": "Potassium/Volt specific for actor communication.",
-      "seeAlso": ["get_comm_channel"]
+      "seeAlso": [
+        "get_comm_channel"
+      ]
     },
     {
       "name": "get_comm_channel",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "get_comm_channel(id: string): BindableEvent",
       "description": "Returns a BindableEvent. Used in one-way communication between actors.",
       "parameters": [
-        { "name": "id", "type": "string", "description": "Channel identifier" }
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Channel identifier"
+        }
       ],
       "returns": [
-        { "type": "BindableEvent", "description": "Communication event" }
+        {
+          "type": "BindableEvent",
+          "description": "Communication event"
+        }
       ],
       "example": "local event = get_comm_channel('my_channel')",
       "notes": "Potassium/Volt specific.",
-      "seeAlso": ["create_comm_channel"]
+      "seeAlso": [
+        "create_comm_channel"
+      ]
     },
     {
       "name": "getactors",
       "library": "Actor",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "getactors(): table",
       "description": "Returns a table of actors (not including deleted ones).",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Array of Actor instances" }
+        {
+          "type": "table",
+          "description": "Array of Actor instances"
+        }
       ],
       "example": "for _, actor in ipairs(getactors()) do\n    print(actor.Name)\nend",
       "notes": "Some games delete their actors while they're running.",
-      "seeAlso": ["getdeletedactors"]
+      "seeAlso": [
+        "getdeletedactors"
+      ]
     },
     {
       "name": "getactorthreads",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "getactorthreads(): table",
       "description": "Returns a table of every thread connected to every actor.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Array of threads" }
+        {
+          "type": "table",
+          "description": "Array of threads"
+        }
       ],
       "example": "local threads = getactorthreads()",
       "notes": "",
-      "seeAlso": ["getactors"]
+      "seeAlso": [
+        "getactors"
+      ]
     },
     {
       "name": "getdeletedactors",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "getdeletedactors(): table",
       "description": "Returns a table of every deleted actor.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Array of deleted Actor instances" }
+        {
+          "type": "table",
+          "description": "Array of deleted Actor instances"
+        }
       ],
       "example": "local deleted = getdeletedactors()",
       "notes": "",
-      "seeAlso": ["getactors"]
+      "seeAlso": [
+        "getactors"
+      ]
     },
     {
       "name": "is_parallel",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "is_parallel(): boolean",
       "description": "Returns a boolean indicating whether the current thread is running in parallel.",
       "parameters": [],
       "returns": [
-        { "type": "boolean", "description": "True if parallel" }
+        {
+          "type": "boolean",
+          "description": "True if parallel"
+        }
       ],
       "example": "if is_parallel() then\n    print('Running in parallel!')\nend",
       "notes": "",
-      "seeAlso": ["run_on_actor"]
+      "seeAlso": [
+        "run_on_actor"
+      ]
     },
     {
       "name": "run_on_actor",
       "library": "Actor",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "run_on_actor(actor: Actor, code: string): void",
       "description": "Executes a script on an actor.",
       "parameters": [
-        { "name": "actor", "type": "Actor", "description": "The target actor" },
-        { "name": "code", "type": "string", "description": "The Lua code to execute" }
+        {
+          "name": "actor",
+          "type": "Actor",
+          "description": "The target actor"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "description": "The Lua code to execute"
+        }
       ],
       "returns": [],
       "example": "run_on_actor(myActor, 'print(\"Hello from actor\")')",
       "notes": "",
-      "seeAlso": ["run_on_thread"]
+      "seeAlso": [
+        "run_on_thread"
+      ]
     },
     {
       "name": "run_on_thread",
       "library": "Actor",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "run_on_thread(thread: thread, code: string): void",
       "description": "Executes a script on an actor thread.",
       "parameters": [
-        { "name": "thread", "type": "thread", "description": "The target thread" },
-        { "name": "code", "type": "string", "description": "The Lua code to execute" }
+        {
+          "name": "thread",
+          "type": "thread",
+          "description": "The target thread"
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "description": "The Lua code to execute"
+        }
       ],
       "returns": [],
       "example": "run_on_thread(myThread, 'print(\"Hello from thread\")')",
       "notes": "",
-      "seeAlso": ["run_on_actor"]
+      "seeAlso": [
+        "run_on_actor"
+      ]
     },
     {
       "name": "getfunctionhash",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc"
+      ],
       "signature": "getfunctionhash(func: function): string",
       "description": "Returns the hash of a lua function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to hash" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to hash"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Function hash" }
+        {
+          "type": "string",
+          "description": "Function hash"
+        }
       ],
       "example": "print(getfunctionhash(print))",
       "notes": "",
@@ -136,112 +230,215 @@
     {
       "name": "hookfunction",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "hookfunction(func: function, hook: function): function",
       "description": "Hooks a Lua or C function. Returns a copy of the original function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to hook" },
-        { "name": "hook", "type": "function", "description": "The replacement function" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to hook"
+        },
+        {
+          "name": "hook",
+          "type": "function",
+          "description": "The replacement function"
+        }
       ],
       "returns": [
-        { "type": "function", "description": "Original function copy" }
+        {
+          "type": "function",
+          "description": "Original function copy"
+        }
       ],
       "example": "local oldPrint = hookfunction(print, function(...)\n\trconsoleprint('[hooked] ')\n\treturn oldPrint(...)\nend)",
       "notes": "Always call the original to avoid breaking game logic.",
-      "seeAlso": ["restorefunction", "isfunctionhooked", "newcclosure"]
+      "seeAlso": [
+        "restorefunction",
+        "isfunctionhooked",
+        "newcclosure"
+      ]
     },
     {
       "name": "iscclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "iscclosure(func: function): boolean",
       "description": "Returns a boolean indicating whether the function is a C closure.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to check" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to check"
+        }
       ],
       "returns": [
-        { "type": "boolean", "description": "True if C closure" }
+        {
+          "type": "boolean",
+          "description": "True if C closure"
+        }
       ],
       "example": "print(iscclosure(print)) -- true",
       "notes": "",
-      "seeAlso": ["islclosure"]
+      "seeAlso": [
+        "islclosure"
+      ]
     },
     {
       "name": "isexecutorclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "isexecutorclosure(func: function): boolean",
       "description": "Returns a boolean indicating whether the function has been created by the executor.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to check" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to check"
+        }
       ],
       "returns": [
-        { "type": "boolean", "description": "True if created by executor" }
+        {
+          "type": "boolean",
+          "description": "True if created by executor"
+        }
       ],
       "example": "print(isexecutorclosure(hookfunction)) -- true",
       "notes": "",
-      "seeAlso": ["iscclosure"]
+      "seeAlso": [
+        "iscclosure"
+      ]
     },
     {
       "name": "isfunctionhooked",
       "library": "Closure",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "isfunctionhooked(func: function): boolean",
       "description": "Returns a boolean indicating whether the function has been hooked.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to check" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to check"
+        }
       ],
       "returns": [
-        { "type": "boolean", "description": "True if hooked" }
+        {
+          "type": "boolean",
+          "description": "True if hooked"
+        }
       ],
       "example": "if isfunctionhooked(print) then restorefunction(print) end",
       "notes": "Wave alias: ishooked",
-      "seeAlso": ["hookfunction"]
+      "seeAlso": [
+        "hookfunction"
+      ]
     },
     {
       "name": "islclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "islclosure(func: function): boolean",
       "description": "Returns a boolean indicating whether the function is a lua closure.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to check" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to check"
+        }
       ],
       "returns": [
-        { "type": "boolean", "description": "True if lua closure" }
+        {
+          "type": "boolean",
+          "description": "True if lua closure"
+        }
       ],
       "example": "print(islclosure(function() end)) -- true",
       "notes": "",
-      "seeAlso": ["iscclosure"]
+      "seeAlso": [
+        "iscclosure"
+      ]
     },
     {
       "name": "isnewcclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "isnewcclosure(func: function): boolean",
       "description": "Returns a boolean indicating whether the function has been created using newcclosure.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to check" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to check"
+        }
       ],
       "returns": [
-        { "type": "boolean", "description": "True if new C closure" }
+        {
+          "type": "boolean",
+          "description": "True if new C closure"
+        }
       ],
       "example": "print(isnewcclosure(newcclosure(function() end))) -- true",
       "notes": "",
-      "seeAlso": ["newcclosure"]
+      "seeAlso": [
+        "newcclosure"
+      ]
     },
     {
       "name": "loadstring",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "loadstring(source: string): (function?, string?)",
       "description": "Creates a chunk from the provided source code.",
       "parameters": [
-        { "name": "source", "type": "string", "description": "Lua source code" }
+        {
+          "name": "source",
+          "type": "string",
+          "description": "Lua source code"
+        }
       ],
       "returns": [
-        { "type": "function", "description": "Compiled function (or nil if error)" },
-        { "type": "string", "description": "Error message if compilation failed" }
+        {
+          "type": "function",
+          "description": "Compiled function (or nil if error)"
+        },
+        {
+          "type": "string",
+          "description": "Error message if compilation failed"
+        }
       ],
       "example": "local func, err = loadstring('print(\"Hello\")')\nif func then func() end",
       "notes": "",
@@ -250,58 +447,109 @@
     {
       "name": "newcclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "newcclosure(func: function): function",
       "description": "Creates a new C closure for 'func'.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The Lua function to wrap" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The Lua function to wrap"
+        }
       ],
       "returns": [
-        { "type": "function", "description": "The C closure" }
+        {
+          "type": "function",
+          "description": "The C closure"
+        }
       ],
       "example": "local c_func = newcclosure(function() print('C closure') end)",
       "notes": "Useful for bypassing metatable detection.",
-      "seeAlso": ["iscclosure", "isnewcclosure"]
+      "seeAlso": [
+        "iscclosure",
+        "isnewcclosure"
+      ]
     },
     {
       "name": "newlclosure",
       "library": "Closure",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "newlclosure(func: function): function",
       "description": "Creates a new Lua closure for 'func'.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The C function to wrap" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The C function to wrap"
+        }
       ],
       "returns": [
-        { "type": "function", "description": "The Lua closure" }
+        {
+          "type": "function",
+          "description": "The Lua closure"
+        }
       ],
       "example": "local l_func = newlclosure(print)",
       "notes": "",
-      "seeAlso": ["newcclosure", "islclosure"]
+      "seeAlso": [
+        "newcclosure",
+        "islclosure"
+      ]
     },
     {
       "name": "restorefunction",
       "library": "Closure",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "restorefunction(func: function): void",
       "description": "Restores a previously hooked Lua or C function to its original implementation.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The hooked function" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The hooked function"
+        }
       ],
       "returns": [],
       "example": "restorefunction(print)",
       "notes": "Wave alias: restoreclosure",
-      "seeAlso": ["hookfunction"]
+      "seeAlso": [
+        "hookfunction"
+      ]
     },
     {
       "name": "setstackhidden",
       "library": "Closure",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "setstackhidden(func: function, hidden: boolean): void",
       "description": "Hide a function from call-stack based detections.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "The function to hide" },
-        { "name": "hidden", "type": "boolean", "description": "Whether it should be hidden" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "The function to hide"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "description": "Whether it should be hidden"
+        }
       ],
       "returns": [],
       "example": "setstackhidden(myFunc, true)",
@@ -311,819 +559,3686 @@
     {
       "name": "rconsoleclear",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoleclear(): void",
       "description": "Clears all text in the console.",
       "parameters": [],
       "returns": [],
       "example": "rconsoleclear()",
       "notes": "",
-      "seeAlso": ["rconsolecreate"]
+      "seeAlso": [
+        "rconsolecreate"
+      ]
     },
     {
       "name": "rconsolecreate",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsolecreate(): void",
       "description": "Creates a console window.",
       "parameters": [],
       "returns": [],
       "example": "rconsolecreate()",
       "notes": "Only 1 console can be created.",
-      "seeAlso": ["rconsoledestroy"]
+      "seeAlso": [
+        "rconsoledestroy"
+      ]
     },
     {
       "name": "rconsoledestroy",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoledestroy(): void",
       "description": "Destroys the console window.",
       "parameters": [],
       "returns": [],
       "example": "rconsoledestroy()",
       "notes": "",
-      "seeAlso": ["rconsolecreate"]
+      "seeAlso": [
+        "rconsolecreate"
+      ]
     },
     {
       "name": "rconsoleerror",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoleerror(msg: string): void",
       "description": "Prints a red message to the console.",
       "parameters": [
-        { "name": "msg", "type": "string", "description": "Message to print" }
+        {
+          "name": "msg",
+          "type": "string",
+          "description": "Message to print"
+        }
       ],
       "returns": [],
       "example": "rconsoleerror('An error occurred!')",
       "notes": "Creates console if not already created.",
-      "seeAlso": ["rconsoleprint"]
+      "seeAlso": [
+        "rconsoleprint"
+      ]
     },
     {
       "name": "rconsoleinfo",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoleinfo(msg: string): void",
       "description": "Prints a dark blue message to the console.",
       "parameters": [
-        { "name": "msg", "type": "string", "description": "Message to print" }
+        {
+          "name": "msg",
+          "type": "string",
+          "description": "Message to print"
+        }
       ],
       "returns": [],
       "example": "rconsoleinfo('Loading data...')",
       "notes": "",
-      "seeAlso": ["rconsoleprint"]
+      "seeAlso": [
+        "rconsoleprint"
+      ]
     },
     {
       "name": "rconsoleinput",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoleinput(): string",
       "description": "Receives input directly from the console. Yields until input is received.",
       "parameters": [],
       "returns": [
-        { "type": "string", "description": "Input from user" }
+        {
+          "type": "string",
+          "description": "Input from user"
+        }
       ],
       "example": "local name = rconsoleinput()",
       "notes": "",
-      "seeAlso": ["rconsoleprint"]
+      "seeAlso": [
+        "rconsoleprint"
+      ]
     },
     {
       "name": "rconsoleprint",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsoleprint(msg: string): void",
       "description": "Prints to the console.",
       "parameters": [
-        { "name": "msg", "type": "string", "description": "Message to print" }
+        {
+          "name": "msg",
+          "type": "string",
+          "description": "Message to print"
+        }
       ],
       "returns": [],
       "example": "rconsoleprint('Hello World')",
       "notes": "",
-      "seeAlso": ["rconsolewarn", "rconsoleerror"]
+      "seeAlso": [
+        "rconsolewarn",
+        "rconsoleerror"
+      ]
     },
     {
       "name": "rconsolesettitle",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsolesettitle(title: string): void",
       "description": "Sets the title of the console window.",
       "parameters": [
-        { "name": "title", "type": "string", "description": "New title" }
+        {
+          "name": "title",
+          "type": "string",
+          "description": "New title"
+        }
       ],
       "returns": [],
       "example": "rconsolesettitle('My Script Hub')",
       "notes": "",
-      "seeAlso": ["rconsolecreate"]
+      "seeAlso": [
+        "rconsolecreate"
+      ]
     },
     {
       "name": "rconsolewarn",
       "library": "Console",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "rconsolewarn(msg: string): void",
       "description": "Prints a yellow message to the console.",
       "parameters": [
-        { "name": "msg", "type": "string", "description": "Message to print" }
+        {
+          "name": "msg",
+          "type": "string",
+          "description": "Message to print"
+        }
       ],
       "returns": [],
       "example": "rconsolewarn('Watch out!')",
       "notes": "",
-      "seeAlso": ["rconsoleprint"]
+      "seeAlso": [
+        "rconsoleprint"
+      ]
     },
     {
       "name": "crypt.base64decode",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "crypt.base64decode(data: string): string",
       "description": "Returns a base64 decoded string.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Base64 string" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Base64 string"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Decoded data" }
+        {
+          "type": "string",
+          "description": "Decoded data"
+        }
       ],
       "example": "print(crypt.base64decode('SGVsbG8='))",
       "notes": "sUNC uses base64decode globally.",
-      "seeAlso": ["crypt.base64encode"]
+      "seeAlso": [
+        "crypt.base64encode"
+      ]
     },
     {
       "name": "crypt.base64encode",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "crypt.base64encode(data: string): string",
       "description": "Returns a base64 encoded string.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Raw string" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Raw string"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Base64 encoded data" }
+        {
+          "type": "string",
+          "description": "Base64 encoded data"
+        }
       ],
       "example": "print(crypt.base64encode('Hello'))",
       "notes": "sUNC uses base64encode globally.",
-      "seeAlso": ["crypt.base64decode"]
+      "seeAlso": [
+        "crypt.base64decode"
+      ]
     },
     {
       "name": "crypt.decrypt",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.decrypt(data: string, key: string, iv: string, mode: string?): string",
       "description": "Decrypts provided data using AES encryption.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Encrypted data" },
-        { "name": "key", "type": "string", "description": "Encryption key" },
-        { "name": "iv", "type": "string", "description": "Initialization vector" },
-        { "name": "mode", "type": "string", "description": "AES mode (CBC, ECB, etc.)" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Encrypted data"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "description": "Encryption key"
+        },
+        {
+          "name": "iv",
+          "type": "string",
+          "description": "Initialization vector"
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "description": "AES mode (CBC, ECB, etc.)"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Decrypted data" }
+        {
+          "type": "string",
+          "description": "Decrypted data"
+        }
       ],
       "example": "local decrypted = crypt.decrypt(data, key, iv)",
       "notes": "",
-      "seeAlso": ["crypt.encrypt"]
+      "seeAlso": [
+        "crypt.encrypt"
+      ]
     },
     {
       "name": "crypt.encrypt",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.encrypt(data: string, key: string, iv: string?, mode: string?): (string, string)",
       "description": "Encrypts provided data using AES encryption.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Raw data" },
-        { "name": "key", "type": "string", "description": "Encryption key" },
-        { "name": "iv", "type": "string", "description": "Initialization vector (optional)" },
-        { "name": "mode", "type": "string", "description": "AES mode (CBC, ECB, etc.)" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Raw data"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "description": "Encryption key"
+        },
+        {
+          "name": "iv",
+          "type": "string",
+          "description": "Initialization vector (optional)"
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "description": "AES mode (CBC, ECB, etc.)"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Encrypted data" },
-        { "type": "string", "description": "Initialization vector" }
+        {
+          "type": "string",
+          "description": "Encrypted data"
+        },
+        {
+          "type": "string",
+          "description": "Initialization vector"
+        }
       ],
       "example": "local encrypted, iv = crypt.encrypt('data', key)",
       "notes": "",
-      "seeAlso": ["crypt.decrypt"]
+      "seeAlso": [
+        "crypt.decrypt"
+      ]
     },
     {
       "name": "crypt.generatebytes",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.generatebytes(size: number): string",
       "description": "Returns a base64 encoded string of randomly generated bytes.",
       "parameters": [
-        { "name": "size", "type": "number", "description": "Number of bytes" }
+        {
+          "name": "size",
+          "type": "number",
+          "description": "Number of bytes"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Base64 encoded random bytes" }
+        {
+          "type": "string",
+          "description": "Base64 encoded random bytes"
+        }
       ],
       "example": "local bytes = crypt.generatebytes(16)",
       "notes": "",
-      "seeAlso": ["crypt.random"]
+      "seeAlso": [
+        "crypt.random"
+      ]
     },
     {
       "name": "crypt.generatekey",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.generatekey(): string",
       "description": "Generates and returns a random key for encryption.",
       "parameters": [],
       "returns": [
-        { "type": "string", "description": "Random key" }
+        {
+          "type": "string",
+          "description": "Random key"
+        }
       ],
       "example": "local key = crypt.generatekey()",
       "notes": "",
-      "seeAlso": ["crypt.encrypt"]
+      "seeAlso": [
+        "crypt.encrypt"
+      ]
     },
     {
       "name": "crypt.hash",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.hash(data: string, algorithm: string): string",
       "description": "Hashes data using the specified algorithm (sha256, sha1, md5, etc).",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Data to hash" },
-        { "name": "algorithm", "type": "string", "description": "Hashing algorithm" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Data to hash"
+        },
+        {
+          "name": "algorithm",
+          "type": "string",
+          "description": "Hashing algorithm"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Hashed data" }
+        {
+          "type": "string",
+          "description": "Hashed data"
+        }
       ],
       "example": "local hash = crypt.hash('data', 'sha256')",
       "notes": "",
-      "seeAlso": ["crypt.hmac"]
+      "seeAlso": [
+        "crypt.hmac"
+      ]
     },
     {
       "name": "crypt.hmac",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.hmac(data: string, key: string, algorithm: string): string",
       "description": "Generates an HMAC (Hash-based Message Authentication Code).",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Message data" },
-        { "name": "key", "type": "string", "description": "Secret key" },
-        { "name": "algorithm", "type": "string", "description": "Hashing algorithm" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Message data"
+        },
+        {
+          "name": "key",
+          "type": "string",
+          "description": "Secret key"
+        },
+        {
+          "name": "algorithm",
+          "type": "string",
+          "description": "Hashing algorithm"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "HMAC string" }
+        {
+          "type": "string",
+          "description": "HMAC string"
+        }
       ],
       "example": "local hmac = crypt.hmac('data', 'secret', 'sha256')",
       "notes": "",
-      "seeAlso": ["crypt.hash"]
+      "seeAlso": [
+        "crypt.hash"
+      ]
     },
     {
       "name": "crypt.lz4compress",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "crypt.lz4compress(data: string): string",
       "description": "Returns a compressed string using the LZ4 algorithm.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Raw string" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Raw string"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Compressed data" }
+        {
+          "type": "string",
+          "description": "Compressed data"
+        }
       ],
       "example": "local compressed = crypt.lz4compress('very long string')",
       "notes": "sUNC uses lz4compress globally.",
-      "seeAlso": ["crypt.lz4decompress"]
+      "seeAlso": [
+        "crypt.lz4decompress"
+      ]
     },
     {
       "name": "crypt.lz4decompress",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "crypt.lz4decompress(data: string, size: number?): string",
       "description": "Returns a decompressed string using the LZ4 algorithm.",
       "parameters": [
-        { "name": "data", "type": "string", "description": "Compressed string" },
-        { "name": "size", "type": "number", "description": "Original size (optional)" }
+        {
+          "name": "data",
+          "type": "string",
+          "description": "Compressed string"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "description": "Original size (optional)"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Decompressed data" }
+        {
+          "type": "string",
+          "description": "Decompressed data"
+        }
       ],
       "example": "local decompressed = crypt.lz4decompress(compressed)",
       "notes": "sUNC uses lz4decompress globally.",
-      "seeAlso": ["crypt.lz4compress"]
+      "seeAlso": [
+        "crypt.lz4compress"
+      ]
     },
     {
       "name": "crypt.random",
       "library": "Crypt",
-      "executors": ["potassium", "volt", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
       "signature": "crypt.random(size: number): string",
       "description": "Returns a string of randomly generated bytes. Not base64 encoded.",
       "parameters": [
-        { "name": "size", "type": "number", "description": "Number of bytes" }
+        {
+          "name": "size",
+          "type": "number",
+          "description": "Number of bytes"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "Raw random bytes" }
+        {
+          "type": "string",
+          "description": "Raw random bytes"
+        }
       ],
       "example": "local rawBytes = crypt.random(16)",
       "notes": "",
-      "seeAlso": ["crypt.generatebytes"]
+      "seeAlso": [
+        "crypt.generatebytes"
+      ]
     },
     {
       "name": "debug.getcallstack",
       "library": "Debug",
-      "executors": ["potassium", "volt"],
+      "executors": [
+        "potassium",
+        "volt"
+      ],
       "signature": "debug.getcallstack(): table",
       "description": "Returns a table of the entire stack's information.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Stack trace information" }
+        {
+          "type": "table",
+          "description": "Stack trace information"
+        }
       ],
       "example": "local stack = debug.getcallstack()",
       "notes": "",
-      "seeAlso": ["debug.getinfo"]
+      "seeAlso": [
+        "debug.getinfo"
+      ]
     },
     {
       "name": "debug.getconstant",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getconstant(func: function, index: number): any",
       "description": "Returns a singular constant from a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" },
-        { "name": "index", "type": "number", "description": "Constant index" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Constant index"
+        }
       ],
       "returns": [
-        { "type": "any", "description": "Constant value" }
+        {
+          "type": "any",
+          "description": "Constant value"
+        }
       ],
       "example": "local c = debug.getconstant(print, 1)",
       "notes": "",
-      "seeAlso": ["debug.getconstants", "debug.setconstant"]
+      "seeAlso": [
+        "debug.getconstants",
+        "debug.setconstant"
+      ]
     },
     {
       "name": "debug.getconstants",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getconstants(func: function): table",
       "description": "Returns a table of all constants from a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Array of constants" }
+        {
+          "type": "table",
+          "description": "Array of constants"
+        }
       ],
       "example": "local consts = debug.getconstants(print)",
       "notes": "",
-      "seeAlso": ["debug.getconstant"]
+      "seeAlso": [
+        "debug.getconstant"
+      ]
     },
     {
       "name": "debug.getinfo",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getinfo(func: function|number): table",
       "description": "Returns a table of information about a function or stack level.",
       "parameters": [
-        { "name": "func", "type": "function|number", "description": "Target function or stack level" }
+        {
+          "name": "func",
+          "type": "function|number",
+          "description": "Target function or stack level"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Function info (source, name, etc)" }
+        {
+          "type": "table",
+          "description": "Function info (source, name, etc)"
+        }
       ],
       "example": "local info = debug.getinfo(1)",
       "notes": "",
-      "seeAlso": ["debug.getcallstack"]
+      "seeAlso": [
+        "debug.getcallstack"
+      ]
     },
     {
       "name": "debug.getproto",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getproto(func: function, index: number, active: boolean?): function|table",
       "description": "Gets a cloned proto inside the 'func'.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" },
-        { "name": "index", "type": "number", "description": "Proto index" },
-        { "name": "active", "type": "boolean", "description": "If true, returns active protos" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Proto index"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "description": "If true, returns active protos"
+        }
       ],
       "returns": [
-        { "type": "function|table", "description": "Cloned proto or table of active protos" }
+        {
+          "type": "function|table",
+          "description": "Cloned proto or table of active protos"
+        }
       ],
       "example": "local proto = debug.getproto(myFunc, 1)",
       "notes": "",
-      "seeAlso": ["debug.getprotos"]
+      "seeAlso": [
+        "debug.getprotos"
+      ]
     },
     {
       "name": "debug.getprotos",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getprotos(func: function): table",
       "description": "Returns a list of all cloned protos.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Array of cloned protos" }
+        {
+          "type": "table",
+          "description": "Array of cloned protos"
+        }
       ],
       "example": "local protos = debug.getprotos(myFunc)",
       "notes": "",
-      "seeAlso": ["debug.getproto"]
+      "seeAlso": [
+        "debug.getproto"
+      ]
     },
     {
       "name": "debug.getregistry",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getregistry(): table",
       "description": "Returns the Lua registry table.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Registry table" }
+        {
+          "type": "table",
+          "description": "Registry table"
+        }
       ],
       "example": "local reg = debug.getregistry()",
       "notes": "Often aliased as getreg()",
-      "seeAlso": ["getreg"]
+      "seeAlso": [
+        "getreg"
+      ]
     },
     {
       "name": "debug.getupvalue",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getupvalue(func: function, index: number): any",
       "description": "Returns a singular upvalue from a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" },
-        { "name": "index", "type": "number", "description": "Upvalue index" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Upvalue index"
+        }
       ],
       "returns": [
-        { "type": "any", "description": "Upvalue value" }
+        {
+          "type": "any",
+          "description": "Upvalue value"
+        }
       ],
       "example": "local up = debug.getupvalue(myFunc, 1)",
       "notes": "",
-      "seeAlso": ["debug.getupvalues", "debug.setupvalue"]
+      "seeAlso": [
+        "debug.getupvalues",
+        "debug.setupvalue"
+      ]
     },
     {
       "name": "debug.getupvalues",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getupvalues(func: function): table",
       "description": "Returns a table of upvalues from a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Array/Map of upvalues" }
+        {
+          "type": "table",
+          "description": "Array/Map of upvalues"
+        }
       ],
       "example": "local ups = debug.getupvalues(myFunc)",
       "notes": "",
-      "seeAlso": ["debug.getupvalue"]
+      "seeAlso": [
+        "debug.getupvalue"
+      ]
     },
     {
       "name": "debug.setconstant",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.setconstant(func: function, index: number, value: any): void",
       "description": "Sets a singular constant in a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" },
-        { "name": "index", "type": "number", "description": "Constant index" },
-        { "name": "value", "type": "any", "description": "New value" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Constant index"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "New value"
+        }
       ],
       "returns": [],
       "example": "debug.setconstant(myFunc, 1, 'newValue')",
       "notes": "",
-      "seeAlso": ["debug.getconstant"]
+      "seeAlso": [
+        "debug.getconstant"
+      ]
     },
     {
       "name": "debug.setupvalue",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.setupvalue(func: function, index: number, value: any): void",
       "description": "Sets a singular upvalue in a function.",
       "parameters": [
-        { "name": "func", "type": "function", "description": "Target function" },
-        { "name": "index", "type": "number", "description": "Upvalue index" },
-        { "name": "value", "type": "any", "description": "New value" }
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Upvalue index"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "New value"
+        }
       ],
       "returns": [],
       "example": "debug.setupvalue(myFunc, 1, 'newUpvalue')",
       "notes": "",
-      "seeAlso": ["debug.getupvalue"]
+      "seeAlso": [
+        "debug.getupvalue"
+      ]
     },
     {
       "name": "debug.getstack",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.getstack(level: number, index: number?): any",
       "description": "Returns a table of the stack or a singular object from the stack.",
       "parameters": [
-        { "name": "level", "type": "number", "description": "Stack level" },
-        { "name": "index", "type": "number", "description": "Stack index (optional)" }
+        {
+          "name": "level",
+          "type": "number",
+          "description": "Stack level"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Stack index (optional)"
+        }
       ],
       "returns": [
-        { "type": "any", "description": "Stack array or specific stack value" }
+        {
+          "type": "any",
+          "description": "Stack array or specific stack value"
+        }
       ],
       "example": "local stackVars = debug.getstack(1)",
       "notes": "",
-      "seeAlso": ["debug.setstack"]
+      "seeAlso": [
+        "debug.setstack"
+      ]
     },
     {
       "name": "debug.setstack",
       "library": "Debug",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "debug.setstack(level: number, index: number, value: any): void",
       "description": "Sets a singular object on the stack.",
       "parameters": [
-        { "name": "level", "type": "number", "description": "Stack level" },
-        { "name": "index", "type": "number", "description": "Stack index" },
-        { "name": "value", "type": "any", "description": "New value" }
+        {
+          "name": "level",
+          "type": "number",
+          "description": "Stack level"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Stack index"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "New value"
+        }
       ],
       "returns": [],
       "example": "debug.setstack(1, 1, 'newValue')",
       "notes": "",
-      "seeAlso": ["debug.getstack"]
+      "seeAlso": [
+        "debug.getstack"
+      ]
     },
     {
       "name": "getgenv",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getgenv(): table",
       "description": "Returns the global environment table.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Global environment" }
+        {
+          "type": "table",
+          "description": "Global environment"
+        }
       ],
       "example": "getgenv().MyGlobal = true",
       "notes": "",
-      "seeAlso": ["getrenv"]
+      "seeAlso": [
+        "getrenv"
+      ]
     },
     {
       "name": "getrenv",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getrenv(): table",
       "description": "Returns the Roblox global environment table.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Roblox environment" }
+        {
+          "type": "table",
+          "description": "Roblox environment"
+        }
       ],
       "example": "local rprint = getrenv().print",
       "notes": "",
-      "seeAlso": ["getgenv"]
+      "seeAlso": [
+        "getgenv"
+      ]
     },
     {
       "name": "getsenv",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getsenv(script: Script): table",
       "description": "Returns the script environment of a LocalScript or ModuleScript.",
       "parameters": [
-        { "name": "script", "type": "Script", "description": "Target script" }
+        {
+          "name": "script",
+          "type": "Script",
+          "description": "Target script"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Script environment" }
+        {
+          "type": "table",
+          "description": "Script environment"
+        }
       ],
       "example": "local env = getsenv(game.Players.LocalPlayer.PlayerScripts.MyScript)",
       "notes": "",
-      "seeAlso": ["getgenv"]
+      "seeAlso": [
+        "getgenv"
+      ]
     },
     {
       "name": "getreg",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getreg(): table",
       "description": "Returns the Lua registry.",
       "parameters": [],
       "returns": [
-        { "type": "table", "description": "Registry table" }
+        {
+          "type": "table",
+          "description": "Registry table"
+        }
       ],
       "example": "local reg = getreg()",
       "notes": "Alias for debug.getregistry()",
-      "seeAlso": ["debug.getregistry"]
+      "seeAlso": [
+        "debug.getregistry"
+      ]
     },
     {
       "name": "getgc",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getgc(includeTables: boolean?): table",
       "description": "Returns a table of objects from the garbage collection list.",
       "parameters": [
-        { "name": "includeTables", "type": "boolean", "description": "Whether to include tables" }
+        {
+          "name": "includeTables",
+          "type": "boolean",
+          "description": "Whether to include tables"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Array of GC objects" }
+        {
+          "type": "table",
+          "description": "Array of GC objects"
+        }
       ],
       "example": "for _, v in pairs(getgc(true)) do\n    if type(v) == 'table' then\n        -- do stuff\n    end\nend",
       "notes": "",
-      "seeAlso": ["filtergc"]
+      "seeAlso": [
+        "filtergc"
+      ]
     },
     {
       "name": "filtergc",
       "library": "Environment",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "filtergc(type: string, options: table, returnSingle: boolean?): table|any",
       "description": "Returns a table of objects filtered from the garbage collection list.",
       "parameters": [
-        { "name": "type", "type": "string", "description": "Type of object ('function', 'table')" },
-        { "name": "options", "type": "table", "description": "Filter options (e.g. {Name = 'Update'})" },
-        { "name": "returnSingle", "type": "boolean", "description": "Return first match" }
+        {
+          "name": "type",
+          "type": "string",
+          "description": "Type of object ('function', 'table')"
+        },
+        {
+          "name": "options",
+          "type": "table",
+          "description": "Filter options (e.g. {Name = 'Update'})"
+        },
+        {
+          "name": "returnSingle",
+          "type": "boolean",
+          "description": "Return first match"
+        }
       ],
       "returns": [
-        { "type": "table|any", "description": "Filtered objects" }
+        {
+          "type": "table|any",
+          "description": "Filtered objects"
+        }
       ],
       "example": "local updateFunc = filtergc('function', {Name = 'Update'}, true)",
       "notes": "",
-      "seeAlso": ["getgc"]
+      "seeAlso": [
+        "getgc"
+      ]
     },
     {
       "name": "Drawing.new",
       "library": "Drawing",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "Drawing.new(type: string): DrawingObject",
       "description": "Create a new drawing object of the specified type.",
       "parameters": [
-        { "name": "type", "type": "string", "description": "'Line', 'Text', 'Image', 'Circle', 'Square', 'Quad', 'Triangle'" }
+        {
+          "name": "type",
+          "type": "string",
+          "description": "'Line', 'Text', 'Image', 'Circle', 'Square', 'Quad', 'Triangle'"
+        }
       ],
       "returns": [
-        { "type": "DrawingObject", "description": "The drawing object" }
+        {
+          "type": "DrawingObject",
+          "description": "The drawing object"
+        }
       ],
       "example": "local text = Drawing.new('Text')\ntext.Text = 'Hello'\ntext.Visible = true",
       "notes": "",
-      "seeAlso": ["cleardrawcache", "isrenderobj"]
+      "seeAlso": [
+        "cleardrawcache",
+        "isrenderobj"
+      ]
     },
     {
       "name": "cleardrawcache",
       "library": "Drawing",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "cleardrawcache(): void",
       "description": "Removes all rendered drawing objects from the cache.",
       "parameters": [],
       "returns": [],
       "example": "cleardrawcache()",
       "notes": "",
-      "seeAlso": ["Drawing.new"]
+      "seeAlso": [
+        "Drawing.new"
+      ]
     },
     {
       "name": "getrawmetatable",
       "library": "Metatable",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getrawmetatable(obj: any): table",
       "description": "Gets the metatable from an object whilst ignoring the __metatable value.",
       "parameters": [
-        { "name": "obj", "type": "any", "description": "Object to get metatable from" }
+        {
+          "name": "obj",
+          "type": "any",
+          "description": "Object to get metatable from"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "The raw metatable" }
+        {
+          "type": "table",
+          "description": "The raw metatable"
+        }
       ],
       "example": "local mt = getrawmetatable(game)",
       "notes": "",
-      "seeAlso": ["setrawmetatable"]
+      "seeAlso": [
+        "setrawmetatable"
+      ]
     },
     {
       "name": "setrawmetatable",
       "library": "Metatable",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "setrawmetatable(obj: any, mt: table): void",
       "description": "Sets the metatable for an object whilst ignoring the __metatable value.",
       "parameters": [
-        { "name": "obj", "type": "any", "description": "Object to set metatable for" },
-        { "name": "mt", "type": "table", "description": "New metatable" }
+        {
+          "name": "obj",
+          "type": "any",
+          "description": "Object to set metatable for"
+        },
+        {
+          "name": "mt",
+          "type": "table",
+          "description": "New metatable"
+        }
       ],
       "returns": [],
       "example": "setrawmetatable(obj, newMt)",
       "notes": "",
-      "seeAlso": ["getrawmetatable"]
+      "seeAlso": [
+        "getrawmetatable"
+      ]
     },
     {
       "name": "setreadonly",
       "library": "Metatable",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "setreadonly(table: table, readonly: boolean): void",
       "description": "Sets the table's read-only/protected status.",
       "parameters": [
-        { "name": "table", "type": "table", "description": "Target table" },
-        { "name": "readonly", "type": "boolean", "description": "Read-only status" }
+        {
+          "name": "table",
+          "type": "table",
+          "description": "Target table"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "description": "Read-only status"
+        }
       ],
       "returns": [],
       "example": "setreadonly(getrawmetatable(game), false)",
       "notes": "",
-      "seeAlso": ["makereadonly", "makewritable"]
+      "seeAlso": [
+        "makereadonly",
+        "makewritable"
+      ]
     },
     {
       "name": "hookmetamethod",
       "library": "Metatable",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "hookmetamethod(obj: any, method: string, func: function): function",
       "description": "Hooks a metamethod inside the object.",
       "parameters": [
-        { "name": "obj", "type": "any", "description": "Target object" },
-        { "name": "method", "type": "string", "description": "Metamethod name (e.g. __namecall)" },
-        { "name": "func", "type": "function", "description": "Replacement function" }
+        {
+          "name": "obj",
+          "type": "any",
+          "description": "Target object"
+        },
+        {
+          "name": "method",
+          "type": "string",
+          "description": "Metamethod name (e.g. __namecall)"
+        },
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Replacement function"
+        }
       ],
       "returns": [
-        { "type": "function", "description": "Original metamethod function" }
+        {
+          "type": "function",
+          "description": "Original metamethod function"
+        }
       ],
       "example": "local oldNamecall\noldNamecall = hookmetamethod(game, '__namecall', function(self, ...)\n    return oldNamecall(self, ...)\nend)",
       "notes": "",
-      "seeAlso": ["getnamecallmethod", "hookfunction"]
+      "seeAlso": [
+        "getnamecallmethod",
+        "hookfunction"
+      ]
     },
     {
       "name": "getnamecallmethod",
       "library": "Metatable",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getnamecallmethod(): string",
       "description": "Gets the current thread's __namecall method.",
       "parameters": [],
       "returns": [
-        { "type": "string", "description": "Namecall method" }
+        {
+          "type": "string",
+          "description": "Namecall method"
+        }
       ],
       "example": "local method = getnamecallmethod()",
       "notes": "Must be called within a __namecall hook.",
-      "seeAlso": ["setnamecallmethod"]
+      "seeAlso": [
+        "setnamecallmethod"
+      ]
     },
     {
       "name": "readfile",
       "library": "FileSystem",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "readfile(path: string): string",
       "description": "Read an existing file from the workspace directory.",
       "parameters": [
-        { "name": "path", "type": "string", "description": "File path" }
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
       ],
       "returns": [
-        { "type": "string", "description": "File contents" }
+        {
+          "type": "string",
+          "description": "File contents"
+        }
       ],
       "example": "local contents = readfile('config.txt')",
       "notes": "",
-      "seeAlso": ["writefile"]
+      "seeAlso": [
+        "writefile"
+      ]
     },
     {
       "name": "writefile",
       "library": "FileSystem",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "writefile(path: string, content: string): void",
       "description": "Write a file to the workspace directory.",
       "parameters": [
-        { "name": "path", "type": "string", "description": "File path" },
-        { "name": "content", "type": "string", "description": "Data to write" }
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "Data to write"
+        }
       ],
       "returns": [],
       "example": "writefile('config.txt', 'data')",
       "notes": "",
-      "seeAlso": ["readfile"]
+      "seeAlso": [
+        "readfile"
+      ]
     },
     {
       "name": "request",
       "library": "Miscellaneous",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "request(options: table): table",
       "description": "Creates a HTTP request with specified options.",
       "parameters": [
-        { "name": "options", "type": "table", "description": "Request options (Url, Method, Headers, Body)" }
+        {
+          "name": "options",
+          "type": "table",
+          "description": "Request options (Url, Method, Headers, Body)"
+        }
       ],
       "returns": [
-        { "type": "table", "description": "Response (Success, StatusCode, StatusMessage, Headers, Body)" }
+        {
+          "type": "table",
+          "description": "Response (Success, StatusCode, StatusMessage, Headers, Body)"
+        }
       ],
       "example": "local res = request({Url = 'https://httpbin.org/get', Method = 'GET'})\nprint(res.Body)",
       "notes": "Alias: http_request",
-      "seeAlso": ["httpget"]
+      "seeAlso": [
+        "httpget"
+      ]
     },
     {
       "name": "gethui",
       "library": "Instance",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "gethui(): Instance",
       "description": "Returns a container that's hidden from game scripts.",
       "parameters": [],
       "returns": [
-        { "type": "Instance", "description": "Hidden UI container" }
+        {
+          "type": "Instance",
+          "description": "Hidden UI container"
+        }
       ],
       "example": "local screenGui = Instance.new('ScreenGui')\nscreenGui.Parent = gethui()",
       "notes": "",
-      "seeAlso": ["getinstances"]
+      "seeAlso": [
+        "getinstances"
+      ]
     },
     {
       "name": "fireclickdetector",
       "library": "Instance",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "fireclickdetector(detector: ClickDetector, distance: number?, event: string?): void",
       "description": "Fires a ClickDetector's signal.",
       "parameters": [
-        { "name": "detector", "type": "ClickDetector", "description": "The detector" },
-        { "name": "distance", "type": "number", "description": "Distance (optional)" },
-        { "name": "event", "type": "string", "description": "Event name (optional)" }
+        {
+          "name": "detector",
+          "type": "ClickDetector",
+          "description": "The detector"
+        },
+        {
+          "name": "distance",
+          "type": "number",
+          "description": "Distance (optional)"
+        },
+        {
+          "name": "event",
+          "type": "string",
+          "description": "Event name (optional)"
+        }
       ],
       "returns": [],
       "example": "fireclickdetector(workspace.Part.ClickDetector)",
       "notes": "",
-      "seeAlso": ["fireproximityprompt"]
+      "seeAlso": [
+        "fireproximityprompt"
+      ]
     },
     {
       "name": "setthreadidentity",
       "library": "Script",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "setthreadidentity(identity: number): void",
       "description": "Sets the current thread's identity.",
       "parameters": [
-        { "name": "identity", "type": "number", "description": "Identity level (1-8)" }
+        {
+          "name": "identity",
+          "type": "number",
+          "description": "Identity level (1-8)"
+        }
       ],
       "returns": [],
       "example": "setthreadidentity(7)",
       "notes": "Also setidentity, setthreadcontext",
-      "seeAlso": ["getthreadidentity"]
+      "seeAlso": [
+        "getthreadidentity"
+      ]
     },
     {
       "name": "getthreadidentity",
       "library": "Script",
-      "executors": ["potassium", "volt", "sunc", "wave"],
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
       "signature": "getthreadidentity(): number",
       "description": "Returns the current thread's identity.",
       "parameters": [],
       "returns": [
-        { "type": "number", "description": "Identity level" }
+        {
+          "type": "number",
+          "description": "Identity level"
+        }
       ],
       "example": "print(getthreadidentity())",
       "notes": "Also getidentity, getthreadcontext",
-      "seeAlso": ["setthreadidentity"]
+      "seeAlso": [
+        "setthreadidentity"
+      ]
+    },
+    {
+      "name": "cache.invalidate",
+      "library": "Cache",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "cache.invalidate(obj: Instance): void",
+      "description": "Removes an instance from the internal reference cache.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Instance to invalidate"
+        }
+      ],
+      "returns": [],
+      "example": "cache.invalidate(workspace.Part)",
+      "notes": "",
+      "seeAlso": [
+        "cache.replace",
+        "cache.iscached"
+      ]
+    },
+    {
+      "name": "cache.iscached",
+      "library": "Cache",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "cache.iscached(obj: Instance): boolean",
+      "description": "Returns whether or not an instance exists within the reference cache.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Instance to check"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if cached"
+        }
+      ],
+      "example": "print(cache.iscached(workspace.Part))",
+      "notes": "",
+      "seeAlso": [
+        "cache.invalidate"
+      ]
+    },
+    {
+      "name": "cache.replace",
+      "library": "Cache",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "cache.replace(obj: Instance, new_obj: Instance): void",
+      "description": "Replaces an instance with another instance in the internal reference cache.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Original instance"
+        },
+        {
+          "name": "new_obj",
+          "type": "Instance",
+          "description": "New instance replacement"
+        }
+      ],
+      "returns": [],
+      "example": "cache.replace(workspace.Part, workspace.OtherPart)",
+      "notes": "",
+      "seeAlso": [
+        "cache.invalidate"
+      ]
+    },
+    {
+      "name": "cloneref",
+      "library": "Cache",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "cloneref(obj: Instance): Instance",
+      "description": "Returns a clone of the Instance reference, bypassing == comparisons against the original.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Instance to clone reference"
+        }
+      ],
+      "returns": [
+        {
+          "type": "Instance",
+          "description": "Cloned reference"
+        }
+      ],
+      "example": "local clone = cloneref(game)\nprint(clone == game) -- false",
+      "notes": "",
+      "seeAlso": [
+        "compareinstances"
+      ]
+    },
+    {
+      "name": "compareinstances",
+      "library": "Cache",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "compareinstances(a: Instance, b: Instance): boolean",
+      "description": "Compares two instance references to see if they point to the same underlying object.",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "Instance",
+          "description": "First instance reference"
+        },
+        {
+          "name": "b",
+          "type": "Instance",
+          "description": "Second instance reference"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if they reference the same object"
+        }
+      ],
+      "example": "print(compareinstances(game, cloneref(game))) -- true",
+      "notes": "",
+      "seeAlso": [
+        "cloneref"
+      ]
+    },
+    {
+      "name": "isourthread",
+      "library": "Closure",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "isourthread(): boolean",
+      "description": "Returns a boolean indicating whether the current thread was created by Potassium.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if executor thread"
+        }
+      ],
+      "example": "if isourthread() then print('Running on executor thread') end",
+      "notes": "",
+      "seeAlso": [
+        "checkcaller"
+      ]
+    },
+    {
+      "name": "debug.getsafeenv",
+      "library": "Debug",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "debug.getsafeenv(func: function): boolean",
+      "description": "Returns the safe environment flag of an object.",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function or thread"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "Safe environment status"
+        }
+      ],
+      "example": "local safe = debug.getsafeenv(myFunc)",
+      "notes": "",
+      "seeAlso": [
+        "debug.setsafeenv"
+      ]
+    },
+    {
+      "name": "debug.isvalidlevel",
+      "library": "Debug",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "debug.isvalidlevel(level: number): boolean",
+      "description": "Checks if the provided stack level integer is valid.",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "number",
+          "description": "Stack level"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if valid level"
+        }
+      ],
+      "example": "if debug.isvalidlevel(3) then ... end",
+      "notes": "",
+      "seeAlso": [
+        "debug.getinfo"
+      ]
+    },
+    {
+      "name": "debug.setinfo",
+      "library": "Debug",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "debug.setinfo(func: function, info: table): void",
+      "description": "Modifies debug information associated with a function.",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "info",
+          "type": "table",
+          "description": "Debug info key-value table"
+        }
+      ],
+      "returns": [],
+      "example": "debug.setinfo(myFunc, { name = 'fakeName' })",
+      "notes": "",
+      "seeAlso": [
+        "debug.getinfo"
+      ]
+    },
+    {
+      "name": "debug.setname",
+      "library": "Debug",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "debug.setname(func: function, name: string): void",
+      "description": "Changes the debug name of a function.",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "New function name"
+        }
+      ],
+      "returns": [],
+      "example": "debug.setname(myFunc, 'CustomName')",
+      "notes": "",
+      "seeAlso": [
+        "debug.getinfo"
+      ]
+    },
+    {
+      "name": "debug.setsafeenv",
+      "library": "Debug",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "debug.setsafeenv(func: function, safe: boolean): void",
+      "description": "Sets the safe environment flag for a function or object.",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Target function"
+        },
+        {
+          "name": "safe",
+          "type": "boolean",
+          "description": "Safe status"
+        }
+      ],
+      "returns": [],
+      "example": "debug.setsafeenv(myFunc, true)",
+      "notes": "",
+      "seeAlso": [
+        "debug.getsafeenv"
+      ]
+    },
+    {
+      "name": "Drawing.Fonts",
+      "library": "Drawing",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "Drawing.Fonts: table",
+      "description": "Table containing font identifiers (UI, System, Plex, Monospace).",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Font constants table"
+        }
+      ],
+      "example": "local font = Drawing.Fonts.Monospace",
+      "notes": "",
+      "seeAlso": [
+        "Drawing.new"
+      ]
+    },
+    {
+      "name": "getrenderproperty",
+      "library": "Drawing",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "getrenderproperty(drawing: DrawingObject, property: string): any",
+      "description": "Gets the value of a property on a DrawingObject.",
+      "parameters": [
+        {
+          "name": "drawing",
+          "type": "DrawingObject",
+          "description": "Drawing object"
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "description": "Property name"
+        }
+      ],
+      "returns": [
+        {
+          "type": "any",
+          "description": "Property value"
+        }
+      ],
+      "example": "local color = getrenderproperty(line, 'Color')",
+      "notes": "",
+      "seeAlso": [
+        "setrenderproperty"
+      ]
+    },
+    {
+      "name": "isrenderobj",
+      "library": "Drawing",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "isrenderobj(obj: any): boolean",
+      "description": "Returns a boolean indicating whether the provided value is a DrawingObject.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "any",
+          "description": "Value to test"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if drawing object"
+        }
+      ],
+      "example": "if isrenderobj(obj) then obj:Remove() end",
+      "notes": "",
+      "seeAlso": [
+        "Drawing.new"
+      ]
+    },
+    {
+      "name": "setrenderproperty",
+      "library": "Drawing",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "setrenderproperty(drawing: DrawingObject, property: string, value: any): void",
+      "description": "Sets the value of a property on a DrawingObject.",
+      "parameters": [
+        {
+          "name": "drawing",
+          "type": "DrawingObject",
+          "description": "Drawing object"
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "description": "Property name"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "New property value"
+        }
+      ],
+      "returns": [],
+      "example": "setrenderproperty(line, 'Visible', false)",
+      "notes": "",
+      "seeAlso": [
+        "getrenderproperty"
+      ]
+    },
+    {
+      "name": "DrawingImmediate.GetPaint",
+      "library": "DrawingImmediate",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "DrawingImmediate.GetPaint(zIndex: number): RBXScriptSignal",
+      "description": "Returns a render signal that fires every frame for immediate mode drawing at a given zIndex.",
+      "parameters": [
+        {
+          "name": "zIndex",
+          "type": "number",
+          "description": "Draw layer index"
+        }
+      ],
+      "returns": [
+        {
+          "type": "RBXScriptSignal",
+          "description": "Render step signal"
+        }
+      ],
+      "example": "DrawingImmediate.GetPaint(1):Connect(function() ... end)",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "gettenv",
+      "library": "Environment",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "gettenv(thread: thread): table",
+      "description": "Returns the environment table of a specific Lua thread.",
+      "parameters": [
+        {
+          "name": "thread",
+          "type": "thread",
+          "description": "Target thread"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Thread environment table"
+        }
+      ],
+      "example": "local env = gettenv(coroutine.running())",
+      "notes": "",
+      "seeAlso": [
+        "getsenv",
+        "getgenv"
+      ]
+    },
+    {
+      "name": "appendfile",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "appendfile(path: string, content: string): void",
+      "description": "Appends text content to an existing file in the workspace directory.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "Content to append"
+        }
+      ],
+      "returns": [],
+      "example": "appendfile('log.txt', 'New entry\\n')",
+      "notes": "",
+      "seeAlso": [
+        "writefile",
+        "readfile"
+      ]
+    },
+    {
+      "name": "delfile",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "delfile(path: string): void",
+      "description": "Deletes a file at the specified workspace path.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": [],
+      "example": "delfile('cache.json')",
+      "notes": "",
+      "seeAlso": [
+        "delfolder"
+      ]
+    },
+    {
+      "name": "delfolder",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "delfolder(path: string): void",
+      "description": "Deletes a directory at the specified workspace path.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Folder path"
+        }
+      ],
+      "returns": [],
+      "example": "delfolder('temp')",
+      "notes": "",
+      "seeAlso": [
+        "makefolder"
+      ]
+    },
+    {
+      "name": "dofile",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "dofile(path: string): any",
+      "description": "Loads and executes a file from workspace as a Lua chunk.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": [
+        {
+          "type": "any",
+          "description": "Return value of executed file"
+        }
+      ],
+      "example": "dofile('script.lua')",
+      "notes": "",
+      "seeAlso": [
+        "loadfile"
+      ]
+    },
+    {
+      "name": "isfile",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "isfile(path: string): boolean",
+      "description": "Checks if a path in the workspace directory points to a file.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if file exists"
+        }
+      ],
+      "example": "if isfile('config.json') then print('Config exists') end",
+      "notes": "",
+      "seeAlso": [
+        "isfolder"
+      ]
+    },
+    {
+      "name": "isfolder",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "isfolder(path: string): boolean",
+      "description": "Checks if a path in the workspace directory points to a folder.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Folder path"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if folder exists"
+        }
+      ],
+      "example": "if isfolder('data') then print('Folder exists') end",
+      "notes": "",
+      "seeAlso": [
+        "isfile"
+      ]
+    },
+    {
+      "name": "listfiles",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "listfiles(folder: string): table",
+      "description": "Returns an array of file and folder paths located inside the specified directory.",
+      "parameters": [
+        {
+          "name": "folder",
+          "type": "string",
+          "description": "Directory path"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of file path strings"
+        }
+      ],
+      "example": "for _, file in ipairs(listfiles('')) do print(file) end",
+      "notes": "",
+      "seeAlso": [
+        "readfile"
+      ]
+    },
+    {
+      "name": "loadfile",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "loadfile(path: string): (function?, string?)",
+      "description": "Compiles a file into a Lua chunk function without executing it.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": [
+        {
+          "type": "function?",
+          "description": "Compiled function chunk"
+        },
+        {
+          "type": "string?",
+          "description": "Compilation error message"
+        }
+      ],
+      "example": "local chunk, err = loadfile('lib.lua')\nif chunk then chunk() end",
+      "notes": "",
+      "seeAlso": [
+        "dofile"
+      ]
+    },
+    {
+      "name": "makefolder",
+      "library": "FileSystem",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "makefolder(path: string): void",
+      "description": "Creates a new folder at the specified path in the workspace directory.",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Folder path"
+        }
+      ],
+      "returns": [],
+      "example": "makefolder('my_data')",
+      "notes": "",
+      "seeAlso": [
+        "delfolder"
+      ]
+    },
+    {
+      "name": "isrbxactive",
+      "library": "Input",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "isrbxactive(): boolean",
+      "description": "Returns a boolean indicating whether Roblox window currently has focus.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if Roblox focused"
+        }
+      ],
+      "example": "if isrbxactive() then keypress(0x41) end",
+      "notes": "",
+      "seeAlso": [
+        "keypress"
+      ]
+    },
+    {
+      "name": "keytap",
+      "library": "Input",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "keytap(key: number): void",
+      "description": "Simulates pressing and releasing a key.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "number",
+          "description": "Virtual keycode"
+        }
+      ],
+      "returns": [],
+      "example": "keytap(0x41) -- Tap 'A'",
+      "notes": "",
+      "seeAlso": [
+        "keypress",
+        "keyrelease"
+      ]
+    },
+    {
+      "name": "fireproximityprompt",
+      "library": "Instance",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "fireproximityprompt(prompt: ProximityPrompt): void",
+      "description": "Fires the Triggered signal of a ProximityPrompt instance.",
+      "parameters": [
+        {
+          "name": "prompt",
+          "type": "ProximityPrompt",
+          "description": "Prompt to trigger"
+        }
+      ],
+      "returns": [],
+      "example": "fireproximityprompt(workspace.Prompt)",
+      "notes": "",
+      "seeAlso": [
+        "fireclickdetector"
+      ]
+    },
+    {
+      "name": "firetouchinterest",
+      "library": "Instance",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "firetouchinterest(part1: BasePart, part2: BasePart, toggle: number): void",
+      "description": "Fires Touched (0) or TouchEnded (1) interest between two parts.",
+      "parameters": [
+        {
+          "name": "part1",
+          "type": "BasePart",
+          "description": "First part"
+        },
+        {
+          "name": "part2",
+          "type": "BasePart",
+          "description": "Second part"
+        },
+        {
+          "name": "toggle",
+          "type": "number",
+          "description": "0 for touch, 1 for touch ended"
+        }
+      ],
+      "returns": [],
+      "example": "firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, workspace.Door, 0)",
+      "notes": "",
+      "seeAlso": [
+        "fireclickdetector"
+      ]
+    },
+    {
+      "name": "getcallbackvalue",
+      "library": "Instance",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "getcallbackvalue(obj: Instance, property: string): function?",
+      "description": "Returns the function value of a callback property (e.g., BindableFunction.OnInvoke).",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Target object"
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "description": "Callback property name"
+        }
+      ],
+      "returns": [
+        {
+          "type": "function?",
+          "description": "Callback function"
+        }
+      ],
+      "example": "local fn = getcallbackvalue(BindableFunction, 'OnInvoke')",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "getinstances",
+      "library": "Instance",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getinstances(): table",
+      "description": "Returns an array of every Instance currently created in memory.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of Instance objects"
+        }
+      ],
+      "example": "local all = getinstances()",
+      "notes": "",
+      "seeAlso": [
+        "getnilinstances"
+      ]
+    },
+    {
+      "name": "getnilinstances",
+      "library": "Instance",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getnilinstances(): table",
+      "description": "Returns an array of instances whose Parent is nil.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of nil-parented Instance objects"
+        }
+      ],
+      "example": "for _, obj in ipairs(getnilinstances()) do print(obj.Name) end",
+      "notes": "",
+      "seeAlso": [
+        "getinstances"
+      ]
+    },
+    {
+      "name": "getrendersteppedlist",
+      "library": "Instance",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getrendersteppedlist(): table",
+      "description": "Returns a list of callbacks bound with RunService:BindToRenderStep.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of bound callbacks"
+        }
+      ],
+      "example": "local list = getrendersteppedlist()",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "isreadonly",
+      "library": "Metatable",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "isreadonly(tbl: table): boolean",
+      "description": "Checks if a table is read-only.",
+      "parameters": [
+        {
+          "name": "tbl",
+          "type": "table",
+          "description": "Target table"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if read-only"
+        }
+      ],
+      "example": "print(isreadonly(getrawmetatable(game)))",
+      "notes": "",
+      "seeAlso": [
+        "setreadonly"
+      ]
+    },
+    {
+      "name": "makereadonly",
+      "library": "Metatable",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "makereadonly(tbl: table): void",
+      "description": "Marks a table as read-only.",
+      "parameters": [
+        {
+          "name": "tbl",
+          "type": "table",
+          "description": "Target table"
+        }
+      ],
+      "returns": [],
+      "example": "makereadonly(myTable)",
+      "notes": "",
+      "seeAlso": [
+        "makewritable",
+        "setreadonly"
+      ]
+    },
+    {
+      "name": "makewritable",
+      "library": "Metatable",
+      "executors": [
+        "potassium",
+        "volt"
+      ],
+      "signature": "makewritable(tbl: table): void",
+      "description": "Makes a read-only table writable.",
+      "parameters": [
+        {
+          "name": "tbl",
+          "type": "table",
+          "description": "Target table"
+        }
+      ],
+      "returns": [],
+      "example": "makewritable(myTable)",
+      "notes": "",
+      "seeAlso": [
+        "makereadonly",
+        "setreadonly"
+      ]
+    },
+    {
+      "name": "setnamecallmethod",
+      "library": "Metatable",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "setnamecallmethod(method: string): void",
+      "description": "Sets the current thread's namecall method string.",
+      "parameters": [
+        {
+          "name": "method",
+          "type": "string",
+          "description": "Namecall method"
+        }
+      ],
+      "returns": [],
+      "example": "setnamecallmethod('Destroy')",
+      "notes": "",
+      "seeAlso": [
+        "getnamecallmethod"
+      ]
+    },
+    {
+      "name": "clearteleportqueue",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "clearteleportqueue(): void",
+      "description": "Clears all scripts queued by queueonteleport.",
+      "parameters": [],
+      "returns": [],
+      "example": "clearteleportqueue()",
+      "notes": "",
+      "seeAlso": [
+        "queueonteleport"
+      ]
+    },
+    {
+      "name": "getfflag",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getfflag(flag: string): (string|boolean|number)?",
+      "description": "Returns the value of a Roblox Fast Flag.",
+      "parameters": [
+        {
+          "name": "flag",
+          "type": "string",
+          "description": "Fast flag name"
+        }
+      ],
+      "returns": [
+        {
+          "type": "any",
+          "description": "Flag value"
+        }
+      ],
+      "example": "print(getfflag('DebugDisableTouchInput'))",
+      "notes": "",
+      "seeAlso": [
+        "setfflag"
+      ]
+    },
+    {
+      "name": "getfflagtype",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getfflagtype(flag: string): string",
+      "description": "Returns the data type string of a Fast Flag.",
+      "parameters": [
+        {
+          "name": "flag",
+          "type": "string",
+          "description": "Fast flag name"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Type name ('bool', 'int', etc)"
+        }
+      ],
+      "example": "print(getfflagtype('DebugDisableTouchInput'))",
+      "notes": "",
+      "seeAlso": [
+        "getfflag"
+      ]
+    },
+    {
+      "name": "getobjects",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getobjects(assetId: string): table",
+      "description": "Fetches objects from Roblox content asset ID (equivalent to game:GetObjects).",
+      "parameters": [
+        {
+          "name": "assetId",
+          "type": "string",
+          "description": "Asset URI or ID"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of loaded instances"
+        }
+      ],
+      "example": "local objects = getobjects('rbxassetid://123456')",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "httpget",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "httpget(url: string, returnRaw: boolean?): string",
+      "description": "Performs an HTTP GET request to the specified URL.",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "returnRaw",
+          "type": "boolean",
+          "description": "Return binary response if true"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Response body string"
+        }
+      ],
+      "example": "local body = httpget('https://example.com')",
+      "notes": "Alias for game:HttpGet",
+      "seeAlso": [
+        "request"
+      ]
+    },
+    {
+      "name": "setclipboard",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "setclipboard(text: string): void",
+      "description": "Copies the provided text string into system clipboard.",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Text to copy"
+        }
+      ],
+      "returns": [],
+      "example": "setclipboard('Hello world')",
+      "notes": "Alias: toclipboard",
+      "seeAlso": []
+    },
+    {
+      "name": "setfflag",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "setfflag(flag: string, value: string): void",
+      "description": "Sets the value of a Fast Flag.",
+      "parameters": [
+        {
+          "name": "flag",
+          "type": "string",
+          "description": "Fast flag name"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "New string value"
+        }
+      ],
+      "returns": [],
+      "example": "setfflag('DebugDisableTouchInput', 'true')",
+      "notes": "",
+      "seeAlso": [
+        "getfflag"
+      ]
+    },
+    {
+      "name": "setrbxclipboard",
+      "library": "Miscellaneous",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "setrbxclipboard(text: string): void",
+      "description": "Copies text into Roblox Studio's internal clipboard.",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Text string"
+        }
+      ],
+      "returns": [],
+      "example": "setrbxclipboard('Studio text')",
+      "notes": "",
+      "seeAlso": [
+        "setclipboard"
+      ]
+    },
+    {
+      "name": "oth.get_original_thread",
+      "library": "OTH",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "oth.get_original_thread(): thread?",
+      "description": "Returns the original thread from which an OTH hook was dispatched.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "thread?",
+          "description": "Original thread object"
+        }
+      ],
+      "example": "local t = oth.get_original_thread()",
+      "notes": "",
+      "seeAlso": [
+        "oth.hook"
+      ]
+    },
+    {
+      "name": "oth.get_root_callback",
+      "library": "OTH",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "oth.get_root_callback(): function?",
+      "description": "Retrieves the original function for calling inside an OTH hook callback.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "function?",
+          "description": "Root function"
+        }
+      ],
+      "example": "local orig = oth.get_root_callback()",
+      "notes": "",
+      "seeAlso": [
+        "oth.hook"
+      ]
+    },
+    {
+      "name": "oth.is_hook_thread",
+      "library": "OTH",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "oth.is_hook_thread(): boolean",
+      "description": "Returns whether the currently executing thread is an OTH hook thread.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if OTH hook thread"
+        }
+      ],
+      "example": "if oth.is_hook_thread() then print('In OTH hook') end",
+      "notes": "",
+      "seeAlso": [
+        "oth.hook"
+      ]
+    },
+    {
+      "name": "PsmConnection",
+      "library": "PsmSignal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "PsmConnection: table",
+      "description": "Connection object returned when subscribing to a PsmSignal.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Connection table with Disconnect method"
+        }
+      ],
+      "example": "local conn = sig:Connect(fn)\nconn:Disconnect()",
+      "notes": "",
+      "seeAlso": [
+        "PsmSignal.new"
+      ]
+    },
+    {
+      "name": "PsmSignal.new",
+      "library": "PsmSignal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "PsmSignal.new(): PsmSignal",
+      "description": "Constructs a new custom PsmSignal object.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "PsmSignal",
+          "description": "Signal object"
+        }
+      ],
+      "example": "local sig = PsmSignal.new()",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "RakNetPacket",
+      "library": "RakNet",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "RakNetPacket: table",
+      "description": "Object representing a raw network packet in RakNet.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "RakNet packet structure"
+        }
+      ],
+      "example": "raknet.add_send_hook(function(packet) print(packet.packet_id) end)",
+      "notes": "",
+      "seeAlso": [
+        "raknet.send"
+      ]
+    },
+    {
+      "name": "raknet.add_receive_hook",
+      "library": "RakNet",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "raknet.add_receive_hook(hook: function): function",
+      "description": "Registers a callback that runs before a RakNet packet is received.",
+      "parameters": [
+        {
+          "name": "hook",
+          "type": "function",
+          "description": "Callback(packet)"
+        }
+      ],
+      "returns": [
+        {
+          "type": "function",
+          "description": "Connection handle"
+        }
+      ],
+      "example": "raknet.add_receive_hook(function(pkt) ... end)",
+      "notes": "",
+      "seeAlso": [
+        "raknet.remove_receive_hook"
+      ]
+    },
+    {
+      "name": "raknet.remove_receive_hook",
+      "library": "RakNet",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "raknet.remove_receive_hook(hook: function): void",
+      "description": "Removes a registered receive hook callback.",
+      "parameters": [
+        {
+          "name": "hook",
+          "type": "function",
+          "description": "Registered hook"
+        }
+      ],
+      "returns": [],
+      "example": "raknet.remove_receive_hook(myHook)",
+      "notes": "",
+      "seeAlso": [
+        "raknet.add_receive_hook"
+      ]
+    },
+    {
+      "name": "raknet.send",
+      "library": "RakNet",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "raknet.send(packet: RakNetPacket, priority: number?, reliability: number?, channel: number?): void",
+      "description": "Sends a RakNet packet with specified priority and reliability.",
+      "parameters": [
+        {
+          "name": "packet",
+          "type": "RakNetPacket",
+          "description": "Packet object"
+        },
+        {
+          "name": "priority",
+          "type": "number",
+          "description": "Priority level"
+        },
+        {
+          "name": "reliability",
+          "type": "number",
+          "description": "Reliability type"
+        },
+        {
+          "name": "channel",
+          "type": "number",
+          "description": "Ordering channel"
+        }
+      ],
+      "returns": [],
+      "example": "raknet.send(packet, 1, 3, 0)",
+      "notes": "",
+      "seeAlso": [
+        "raknet.add_send_hook"
+      ]
+    },
+    {
+      "name": "getbspval",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getbspval(obj: Instance, property: string): string",
+      "description": "Reads a BinaryString property's value (e.g. PhysicsData).",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Target instance"
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "description": "Binary string property name"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Binary string content"
+        }
+      ],
+      "example": "local bin = getbspval(PartOperation, 'PhysicsData')",
+      "notes": "",
+      "seeAlso": [
+        "gethiddenproperty"
+      ]
+    },
+    {
+      "name": "gethiddenproperties",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "gethiddenproperties(obj: Instance): table",
+      "description": "Returns a key-value dictionary of all hidden/non-scriptable properties for an instance.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Target instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Dictionary of hidden properties"
+        }
+      ],
+      "example": "local props = gethiddenproperties(workspace)",
+      "notes": "",
+      "seeAlso": [
+        "gethiddenproperty"
+      ]
+    },
+    {
+      "name": "getpcd",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getpcd(part: TriangleMeshPart): (string, string)",
+      "description": "Returns hash and binary data for PhysicalConfigData of a TriangleMeshPart.",
+      "parameters": [
+        {
+          "name": "part",
+          "type": "TriangleMeshPart",
+          "description": "Target part"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "16-byte hash"
+        },
+        {
+          "type": "string",
+          "description": "Binary data"
+        }
+      ],
+      "example": "local hash, bin = getpcd(meshPart)",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "getproperties",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getproperties(obj: Instance): table",
+      "description": "Returns a table containing all properties of an instance (including non-scriptable ones).",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Target instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Property dictionary"
+        }
+      ],
+      "example": "local allProps = getproperties(workspace.Part)",
+      "notes": "",
+      "seeAlso": [
+        "gethiddenproperties"
+      ]
+    },
+    {
+      "name": "getproximitypromptduration",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getproximitypromptduration(prompt: ProximityPrompt): number",
+      "description": "Returns the hold duration of a ProximityPrompt.",
+      "parameters": [
+        {
+          "name": "prompt",
+          "type": "ProximityPrompt",
+          "description": "Proximity prompt"
+        }
+      ],
+      "returns": [
+        {
+          "type": "number",
+          "description": "Hold duration in seconds"
+        }
+      ],
+      "example": "print(getproximitypromptduration(prompt))",
+      "notes": "",
+      "seeAlso": [
+        "setproximitypromptduration"
+      ]
+    },
+    {
+      "name": "getsimulationradius",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getsimulationradius(): number",
+      "description": "Returns the current simulation radius of the LocalPlayer.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "number",
+          "description": "Simulation radius"
+        }
+      ],
+      "example": "print(getsimulationradius())",
+      "notes": "",
+      "seeAlso": [
+        "setsimulationradius"
+      ]
+    },
+    {
+      "name": "setproximitypromptduration",
+      "library": "Reflection",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "setproximitypromptduration(prompt: ProximityPrompt, duration: number): void",
+      "description": "Sets the hold duration of a ProximityPrompt.",
+      "parameters": [
+        {
+          "name": "prompt",
+          "type": "ProximityPrompt",
+          "description": "Target prompt"
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "description": "Duration in seconds"
+        }
+      ],
+      "returns": [],
+      "example": "setproximitypromptduration(prompt, 0)",
+      "notes": "",
+      "seeAlso": [
+        "getproximitypromptduration"
+      ]
+    },
+    {
+      "name": "setscriptable",
+      "library": "Reflection",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "setscriptable(obj: Instance, property: string, scriptable: boolean): boolean",
+      "description": "Sets whether a property of an instance can be indexed in Lua.",
+      "parameters": [
+        {
+          "name": "obj",
+          "type": "Instance",
+          "description": "Target instance"
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "description": "Property name"
+        },
+        {
+          "name": "scriptable",
+          "type": "boolean",
+          "description": "Scriptable flag"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "Previous scriptable status"
+        }
+      ],
+      "example": "setscriptable(game.Players.LocalPlayer, 'SimulationRadius', true)",
+      "notes": "",
+      "seeAlso": [
+        "isscriptable"
+      ]
+    },
+    {
+      "name": "Regex.Escape",
+      "library": "Regex",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "Regex.Escape(pattern: string): string",
+      "description": "Escapes special regex characters in a pattern string.",
+      "parameters": [
+        {
+          "name": "pattern",
+          "type": "string",
+          "description": "Regex string"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Escaped regex string"
+        }
+      ],
+      "example": "local esc = Regex.Escape('hello.world*')",
+      "notes": "",
+      "seeAlso": [
+        "Regex.new"
+      ]
+    },
+    {
+      "name": "Regex.new",
+      "library": "Regex",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "Regex.new(pattern: string): Regex",
+      "description": "Creates a new Regex object for regular expression matching.",
+      "parameters": [
+        {
+          "name": "pattern",
+          "type": "string",
+          "description": "Regex pattern string"
+        }
+      ],
+      "returns": [
+        {
+          "type": "Regex",
+          "description": "Compiled Regex object"
+        }
+      ],
+      "example": "local re = Regex.new('^\\\\d+$')",
+      "notes": "",
+      "seeAlso": [
+        "Regex.Escape"
+      ]
+    },
+    {
+      "name": "dumpbytecode",
+      "library": "Script",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "dumpbytecode(func: function): string",
+      "description": "Dumps a Lua function into Luau bytecode format.",
+      "parameters": [
+        {
+          "name": "func",
+          "type": "function",
+          "description": "Lua function"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Bytecode string"
+        }
+      ],
+      "example": "local bc = dumpbytecode(myFunc)",
+      "notes": "Target cannot be a C function.",
+      "seeAlso": [
+        "getscriptbytecode"
+      ]
+    },
+    {
+      "name": "getcallingscript",
+      "library": "Script",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getcallingscript(): Instance?",
+      "description": "Returns the Script instance that called the currently running code.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "Instance?",
+          "description": "Calling script"
+        }
+      ],
+      "example": "local scr = getcallingscript()",
+      "notes": "",
+      "seeAlso": [
+        "getscriptfromthread"
+      ]
+    },
+    {
+      "name": "getrunningscripts",
+      "library": "Script",
+      "executors": [
+        "potassium",
+        "volt",
+        "wave"
+      ],
+      "signature": "getrunningscripts(): table",
+      "description": "Returns an array of all scripts currently running in the environment.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Array of active scripts"
+        }
+      ],
+      "example": "for _, s in ipairs(getrunningscripts()) do print(s.Name) end",
+      "notes": "",
+      "seeAlso": [
+        "getscripts"
+      ]
+    },
+    {
+      "name": "getscriptbytecode",
+      "library": "Script",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getscriptbytecode(script: Instance): string",
+      "description": "Returns the compiled Luau bytecode of a LocalScript or ModuleScript.",
+      "parameters": [
+        {
+          "name": "script",
+          "type": "Instance",
+          "description": "Script instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Bytecode string"
+        }
+      ],
+      "example": "local bc = getscriptbytecode(game.Players.LocalPlayer.PlayerScripts.Script)",
+      "notes": "",
+      "seeAlso": [
+        "getscriptclosure"
+      ]
+    },
+    {
+      "name": "getscriptclosure",
+      "library": "Script",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getscriptclosure(script: Instance): function",
+      "description": "Returns the main closure function of a given script.",
+      "parameters": [
+        {
+          "name": "script",
+          "type": "Instance",
+          "description": "Script instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "function",
+          "description": "Script function"
+        }
+      ],
+      "example": "local fn = getscriptclosure(myScript)",
+      "notes": "Alias: getsclosure",
+      "seeAlso": [
+        "getscriptbytecode"
+      ]
+    },
+    {
+      "name": "getscriptfromthread",
+      "library": "Script",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getscriptfromthread(thread: thread): Instance?",
+      "description": "Returns the script object associated with a given thread.",
+      "parameters": [
+        {
+          "name": "thread",
+          "type": "thread",
+          "description": "Target thread"
+        }
+      ],
+      "returns": [
+        {
+          "type": "Instance?",
+          "description": "Script instance"
+        }
+      ],
+      "example": "local scr = getscriptfromthread(coroutine.running())",
+      "notes": "",
+      "seeAlso": [
+        "getscriptthread"
+      ]
+    },
+    {
+      "name": "getscripthash",
+      "library": "Script",
+      "executors": [
+        "potassium",
+        "volt",
+        "sunc",
+        "wave"
+      ],
+      "signature": "getscripthash(script: Instance): string",
+      "description": "Returns a unique hash string of a script's bytecode.",
+      "parameters": [
+        {
+          "name": "script",
+          "type": "Instance",
+          "description": "Script instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "string",
+          "description": "Hash string"
+        }
+      ],
+      "example": "local hash = getscripthash(myScript)",
+      "notes": "",
+      "seeAlso": [
+        "getscriptbytecode"
+      ]
+    },
+    {
+      "name": "getscriptthread",
+      "library": "Script",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getscriptthread(script: Instance): thread?",
+      "description": "Returns the thread object derived from an associated script.",
+      "parameters": [
+        {
+          "name": "script",
+          "type": "Instance",
+          "description": "Script instance"
+        }
+      ],
+      "returns": [
+        {
+          "type": "thread?",
+          "description": "Thread object"
+        }
+      ],
+      "example": "local t = getscriptthread(myScript)",
+      "notes": "",
+      "seeAlso": [
+        "getscriptfromthread"
+      ]
+    },
+    {
+      "name": "cansignalreplicate",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "cansignalreplicate(signal: RBXScriptSignal): boolean",
+      "description": "Returns a boolean indicating whether an RBXScriptSignal can replicate to the server.",
+      "parameters": [
+        {
+          "name": "signal",
+          "type": "RBXScriptSignal",
+          "description": "Target signal"
+        }
+      ],
+      "returns": [
+        {
+          "type": "boolean",
+          "description": "True if replicatable"
+        }
+      ],
+      "example": "if cansignalreplicate(sig) then ... end",
+      "notes": "",
+      "seeAlso": [
+        "replicatesignal"
+      ]
+    },
+    {
+      "name": "getconnection",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getconnection(signal: RBXScriptSignal, index: number): table",
+      "description": "Returns a Connection object at a specific index from a signal.",
+      "parameters": [
+        {
+          "name": "signal",
+          "type": "RBXScriptSignal",
+          "description": "Target signal"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "description": "Connection index"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "ScriptConnection object"
+        }
+      ],
+      "example": "local conn = getconnection(workspace.Changed, 1)",
+      "notes": "",
+      "seeAlso": [
+        "getconnections"
+      ]
+    },
+    {
+      "name": "getsignalarguments",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getsignalarguments(signal: RBXScriptSignal): table",
+      "description": "Returns a table of expected argument types for a given RBXScriptSignal.",
+      "parameters": [
+        {
+          "name": "signal",
+          "type": "RBXScriptSignal",
+          "description": "Target signal"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Argument type list"
+        }
+      ],
+      "example": "local args = getsignalarguments(remoteSignal)",
+      "notes": "",
+      "seeAlso": [
+        "getsignalargumentsinfo"
+      ]
+    },
+    {
+      "name": "getsignalargumentsinfo",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getsignalargumentsinfo(signal: RBXScriptSignal): table",
+      "description": "Returns detailed argument metadata for replicating a given RBXScriptSignal.",
+      "parameters": [
+        {
+          "name": "signal",
+          "type": "RBXScriptSignal",
+          "description": "Target signal"
+        }
+      ],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Argument info table"
+        }
+      ],
+      "example": "local info = getsignalargumentsinfo(sig)",
+      "notes": "",
+      "seeAlso": [
+        "replicatesignal"
+      ]
+    },
+    {
+      "name": "getsignalwhitelist",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "getsignalwhitelist(): table",
+      "description": "Returns a list of signal whitelist objects allowed for replication.",
+      "parameters": [],
+      "returns": [
+        {
+          "type": "table",
+          "description": "Whitelist array"
+        }
+      ],
+      "example": "local list = getsignalwhitelist()",
+      "notes": "",
+      "seeAlso": []
+    },
+    {
+      "name": "replicatesignal",
+      "library": "Signal",
+      "executors": [
+        "potassium"
+      ],
+      "signature": "replicatesignal(signal: RBXScriptSignal, ...): void",
+      "description": "Fires all server connections connected to an RBXScriptSignal with valid arguments.",
+      "parameters": [
+        {
+          "name": "signal",
+          "type": "RBXScriptSignal",
+          "description": "Target signal"
+        },
+        {
+          "name": "...",
+          "type": "any",
+          "description": "Arguments"
+        }
+      ],
+      "returns": [],
+      "example": "replicatesignal(sig, arg1, arg2)",
+      "notes": "",
+      "seeAlso": [
+        "firesignal"
+      ]
     }
   ]
 }
