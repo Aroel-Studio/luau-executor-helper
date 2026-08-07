@@ -1,0 +1,190 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Luau",
+  "scopeName": "source.luau",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#string-interp" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#constants" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#executor-namespaces" },
+    { "include": "#executor-functions" },
+    { "include": "#roblox-builtins" },
+    { "include": "#luau-builtins" },
+    { "include": "#function-call" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "begin": "--\\[\\=*\\[",
+          "end": "\\]\\=*\\]",
+          "name": "comment.block.luau"
+        },
+        {
+          "begin": "--",
+          "end": "$",
+          "name": "comment.line.double-dash.luau"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.luau",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.luau"
+            }
+          ]
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.luau",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.luau"
+            }
+          ]
+        },
+        {
+          "begin": "\\[\\=*\\[",
+          "end": "\\]\\=*\\]",
+          "name": "string.quoted.block.luau"
+        }
+      ]
+    },
+    "string-interp": {
+      "patterns": [
+        {
+          "begin": "`",
+          "end": "`",
+          "name": "string.interpolated.luau",
+          "patterns": [
+            {
+              "begin": "\\{",
+              "end": "\\}",
+              "name": "meta.interpolation.luau",
+              "patterns": [
+                { "include": "source.luau" }
+              ]
+            },
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.luau"
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(and|break|do|else|elseif|end|for|function|if|in|local|not|or|repeat|return|then|until|while|continue)\\b",
+          "name": "keyword.control.luau"
+        },
+        {
+          "match": "\\b(type|export|typeof)\\b",
+          "name": "keyword.other.type.luau"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "match": "\\b(number|string|boolean|any|unknown|never|thread|userdata|nil|void|table|Instance|Vector3|Vector2|CFrame|Color3|UDim|UDim2|Ray|BrickColor|TweenInfo|RBXScriptSignal|RBXScriptConnection|DateTime|Random|OverlapParams|RaycastParams)\\b",
+          "name": "support.type.luau"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "match": "\\b(true|false|nil)\\b",
+          "name": "constant.language.luau"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b0x[0-9a-fA-F_]+\\b",
+          "name": "constant.numeric.hex.luau"
+        },
+        {
+          "match": "\\b0b[01_]+\\b",
+          "name": "constant.numeric.binary.luau"
+        },
+        {
+          "match": "\\b\\d[\\d_]*(\\.[\\d_]+)?([eE][+-]?[\\d_]+)?\\b",
+          "name": "constant.numeric.float.luau"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "\\+|-|\\*|/|%|\\^|#|\\.\\.|==|~=|<=|>=|<|>|=|::|:|\\+=|-=|\\*=|/=|%=|\\^=|\\.\\.=",
+          "name": "keyword.operator.luau"
+        }
+      ]
+    },
+    "executor-namespaces": {
+      "patterns": [
+        {
+          "match": "\\b(debug|crypt|Drawing|DrawingImmediate|RakNetPacket|raknet|oth|Regex|PsmSignal|WebSocket|Cache|cache|LuaStateProxy|VoltSignal|actor|console|fs|input|instance|metatable|reflection|script_lib|signal)\\b",
+          "name": "support.class.executor.luau"
+        }
+      ]
+    },
+    "executor-functions": {
+      "patterns": [
+        {
+          "match": "\\b(hookfunction|hookmetamethod|getgenv|getrenv|getreg|getgc|getinstances|getnilinstances|getscripts|getloadedmodules|getconnections|firesignal|fireclickdetector|fireproximityprompt|firetouchinterest|isnetworkowner|gethiddenproperty|sethiddenproperty|setsimulationradius|isscriptable|setscriptable|getcustomasset|request|httpget|messagebox|queueonteleport|setclipboard|gethwid|identifyexecutor|getfpscap|setfpscap|decompile|saveinstance|isfunctionhooked|restorefunction|checkcaller|clonefunction|newcclosure|iscclosure|islclosure|cloneref|compareinstances|base64encode|base64decode|lz4compress|lz4decompress|create_comm_channel|get_comm_channel|getactors|getactorthreads|getdeletedactors|is_parallel|run_on_actor|run_on_thread|isexecutorclosure|isnewcclosure|isourthread|loadstring|newlclosure|setstackhidden|rconsoleclear|rconsolecreate|rconsoledestroy|rconsoleerror|rconsoleinfo|rconsoleinput|rconsoleprint|rconsolesettitle|rconsolewarn|filtergc|getsenv|gettenv|appendfile|delfile|delfolder|dofile|isfile|isfolder|listfiles|loadfile|makefolder|readfile|writefile|isrbxactive|keypress|keyrelease|keytap|mouse1click|mouse1press|mouse1release|mouse2click|mouse2press|mouse2release|mousemoveabs|mousemoverel|mousescroll|getcallbackvalue|gethui|getrendersteppedlist|getnamecallmethod|getrawmetatable|isreadonly|makereadonly|makewritable|setnamecallmethod|setrawmetatable|setreadonly|clearteleportqueue|getfflag|getfflagtype|getobjects|setfflag|setrbxclipboard|getbspval|gethiddenproperties|getpcd|getproperties|getproximitypromptduration|getsimulationradius|setproximitypromptduration|dumpbytecode|getcallingscript|getrunningscripts|getscriptbytecode|getscriptclosure|getscriptfromthread|getscripthash|getscriptthread|getthreadidentity|setthreadidentity|cansignalreplicate|getconnection|getsignalarguments|getsignalargumentsinfo|getsignalwhitelist|replicatesignal)\\b",
+          "name": "support.function.executor.luau"
+        }
+      ]
+    },
+    "roblox-builtins": {
+      "patterns": [
+        {
+          "match": "\\b(game|workspace|script|shared|_G|Enum)\\b",
+          "name": "support.variable.roblox.luau"
+        },
+        {
+          "match": "\\b(Instance|Vector3|Vector2|CFrame|Color3|UDim|UDim2|Ray|BrickColor|TweenInfo|DateTime|Random|OverlapParams|RaycastParams)\\.new\\b",
+          "name": "support.function.roblox.luau"
+        }
+      ]
+    },
+    "luau-builtins": {
+      "patterns": [
+        {
+          "match": "\\b(print|warn|error|assert|type|typeof|pairs|ipairs|next|select|pcall|xpcall|setmetatable|getmetatable|rawget|rawset|rawequal|rawlen|tostring|tonumber|require|unpack|tick|time|elapsedTime)\\b",
+          "name": "support.function.builtin.luau"
+        },
+        {
+          "match": "\\b(task|math|table|string|coroutine|utf8|buffer|bit32)\\b",
+          "name": "support.class.luau"
+        }
+      ]
+    },
+    "function-call": {
+      "patterns": [
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "name": "entity.name.function.luau"
+        }
+      ]
+    }
+  }
+}

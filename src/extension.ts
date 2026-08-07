@@ -274,6 +274,79 @@ function update_diagnostics(document: vscode.TextDocument, collection: vscode.Di
     collection.set(document.uri, diagnostics);
 }
 
+//@ Semantic Tokens Provider
+const tokenTypes = ['function', 'variable', 'namespace', 'property', 'parameter', 'type', 'keyword', 'string', 'number'];
+const tokenModifiers = ['declaration', 'defaultLibrary'];
+const semanticTokensLegend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
+
+const EXECUTOR_NAMESPACES = new Set([
+    'debug', 'crypt', 'Drawing', 'DrawingImmediate', 'RakNetPacket', 'raknet',
+    'oth', 'Regex', 'PsmSignal', 'WebSocket', 'Cache', 'cache', 'LuaStateProxy',
+    'VoltSignal', 'actor', 'console', 'fs', 'input', 'instance', 'metatable',
+    'reflection', 'script_lib', 'signal', 'task', 'math', 'table', 'string',
+    'coroutine', 'utf8', 'buffer', 'bit32'
+]);
+
+const ROBLOX_GLOBALS = new Set(['game', 'workspace', 'script', 'shared', '_G', 'Enum']);
+const LUAU_KEYWORDS = new Set([
+    'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function',
+    'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true',
+    'until', 'while', 'continue', 'type', 'export', 'typeof'
+]);
+const LUAU_TYPES = new Set([
+    'number', 'string', 'boolean', 'any', 'unknown', 'never', 'thread',
+    'userdata', 'nil', 'void', 'table', 'Instance', 'Vector3', 'Vector2',
+    'CFrame', 'Color3', 'UDim', 'UDim2', 'Ray', 'BrickColor', 'TweenInfo',
+    'RBXScriptSignal', 'RBXScriptConnection', 'DateTime', 'Random'
+]);
+
+class Executor_SemanticTokens_Provider implements vscode.DocumentSemanticTokensProvider {
+    provideDocumentSemanticTokens(document: vscode.TextDocument): vscode.ProviderResult<vscode.SemanticTokens> {
+        const builder = new vscode.SemanticTokensBuilder(semanticTokensLegend);
+        const text = document.getText();
+        
+        // Simple regex-based tokenization per line
+        const lines = text.split(/\r?\n/);
+        for (let l = 0; l < lines.length; l++) {
+            const line = lines[l];
+            // Skip comment lines
+            const trimmed = line.trimStart();
+            if (trimmed.startsWith('--')) { continue; }
+
+            const wordRegex = /\b[a-zA-Z_][a-zA-Z0-9_]*\b/g;
+            let match;
+            while ((match = wordRegex.exec(line)) !== null) {
+                const word = match[0];
+                const charIndex = match.index;
+                const beforeChar = line.substring(0, charIndex).trimEnd();
+                const isDotAccess = beforeChar.endsWith('.');
+
+                let tokenTypeIdx = -1;
+                let tokenModIdx = 1; // defaultLibrary
+
+                if (EXECUTOR_NAMESPACES.has(word)) {
+                    tokenTypeIdx = tokenTypes.indexOf('namespace');
+                } else if (ROBLOX_GLOBALS.has(word)) {
+                    tokenTypeIdx = tokenTypes.indexOf('variable');
+                } else if (function_map.has(word) || (isDotAccess && function_map.has(`${beforeChar.match(/(\w+)$/)?.[1]}.${word}`))) {
+                    tokenTypeIdx = isDotAccess ? tokenTypes.indexOf('property') : tokenTypes.indexOf('function');
+                } else if (LUAU_KEYWORDS.has(word)) {
+                    tokenTypeIdx = tokenTypes.indexOf('keyword');
+                    tokenModIdx = 0;
+                } else if (LUAU_TYPES.has(word)) {
+                    tokenTypeIdx = tokenTypes.indexOf('type');
+                    tokenModIdx = 0;
+                }
+
+                if (tokenTypeIdx !== -1) {
+                    builder.push(l, charIndex, word.length, tokenTypeIdx, tokenModIdx);
+                }
+            }
+        }
+        return builder.build();
+    }
+}
+
 //@ Extension Activation
 export function activate(context: vscode.ExtensionContext) {
     console.log('Luau Executor Helper is now active!');
@@ -303,6 +376,15 @@ export function activate(context: vscode.ExtensionContext) {
             [{ scheme: 'file', language: 'lua' }, { scheme: 'file', language: 'luau' }],
             new Executor_Signature_Provider(),
             '(', ','
+        )
+    );
+
+    // Register Semantic Tokens Provider
+    context.subscriptions.push(
+        vscode.languages.registerDocumentSemanticTokensProvider(
+            [{ scheme: 'file', language: 'lua' }, { scheme: 'file', language: 'luau' }],
+            new Executor_SemanticTokens_Provider(),
+            semanticTokensLegend
         )
     );
 
